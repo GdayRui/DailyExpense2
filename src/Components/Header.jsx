@@ -4,7 +4,7 @@ import React from 'react';
 class Header extends React.Component {
     render() {
       return <div id='header'>
-          <h2>Header Page</h2>
+          <h2>Header</h2>
       </div>
       ;
     }
