@@ -2,20 +2,30 @@ import React from "react";
 //import './App.css';
 
 class Filter extends React.Component {
-  state = {
-    startDate: null,
-    endDate: null,
-    catigories: [],
-    minAmount: 0,
-    maxAmount: 99999
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      filterObj: {
+        startDate: null,
+        endDate: null,
+        catigoryIDs: [],
+        minAmount: 0,
+        maxAmount: 99999
+      }
+    };
+  }
 
   filterList = () => {
-    //console.log('filter List')
-    let filterResult = [];
-    // call API and update filtered result
-    
-    this.props.onApplyFilter(filterResult);
+    // Call API to get filtered result(data) and update to table
+    fetch("http://localhost:50204/api/Expense/filter", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(this.state.filterObj)
+    })
+      .then(resp => resp.json())
+      .then(filterResult => {
+        this.props.onApplyFilter(filterResult);
+      });
   };
 
   render() {
