@@ -17,7 +17,6 @@ class MainPage extends React.Component {
   }
 
   handleFilterResult = filterResult => {
-    console.log("handleFilterResult");
     // using filterd result to update expense list
     this.setState({ expenseList: filterResult });
   };

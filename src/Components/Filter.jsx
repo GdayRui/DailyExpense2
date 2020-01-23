@@ -17,7 +17,7 @@ class Filter extends React.Component {
 
   handleApplyFilter = () => {
     // Call API to get filtered result(data) and update to table
-    debugger;
+    // debugger;
     fetch("http://localhost:50204/api/Expense/filter", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -31,6 +31,7 @@ class Filter extends React.Component {
 
   handleInputChange = e => {
     let filterObj = this.state.filterObj;
+    // debugger;
     switch (e.target.id) {
       case "start-date":
         filterObj.startDate = e.target.value;
@@ -83,9 +84,10 @@ class Filter extends React.Component {
         {/* filter by amount */}
         <div className="filter-amount-range">
           <p>Amount</p>
-          <input type="text" />
+          <input type="text" id="min-amount" onChange={this.handleInputChange} />
           <span>To</span>
-          <input type="text" />
+          <input type="text" id="max-amount" onChange={this.handleInputChange} />
+          
         </div>
 
         <div>
