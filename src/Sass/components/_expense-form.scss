@@ -1,3 +1,20 @@
-.ExpenseForm{
-    
+@import "../variables.scss";
+
+.expense-form {
+  form {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    div {
+      margin: 0.5rem;
+      .btn-add-expense {
+        padding: 10px 5px;
+        border: 0px solid #ccc;
+        border-radius: 5px;
+        background-color: $primaryColor;
+        color: $secondaryColor;
+        width: 100%;
+      }
+    }
+  }
 }

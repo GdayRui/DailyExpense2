@@ -10,8 +10,8 @@ class MainPage extends React.Component {
     super(props);
     this.state = {
       expenseList: [
-        { id:0, Description: "Egg", Amount: 3.5, Category: "Grocery" },
-        { id:1, Description: "Milk", Amount: 3.5, Category: "Grocery" }
+        { id: 0, Description: "Egg", Amount: 3.5, Category: "Grocery" },
+        { id: 1, Description: "Milk", Amount: 3.5, Category: "Grocery" }
       ]
     };
   }
@@ -32,13 +32,16 @@ class MainPage extends React.Component {
     return (
       <div className="main-page">
         <h2>Daily Expense</h2>
-        <ExpenseForm />
+
         <div>
           <QuickSearch />
           <Filter onApplyFilter={this.handleFilterResult} />
         </div>
-
-        <ExpenseList data={this.state.expenseList} />
+        
+        <div>
+          <ExpenseForm />
+          <ExpenseList data={this.state.expenseList} />
+        </div>
       </div>
     );
   }

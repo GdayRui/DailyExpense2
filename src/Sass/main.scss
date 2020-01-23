@@ -1,5 +1,4 @@
-/* autoprefixer grid: autoplace */
-
+@import "variables.scss";
 @import "layout/_footer.scss";
 @import "layout/_header.scss";
 @import "components/_filter.scss";
@@ -7,7 +6,14 @@
 @import "components/_expense-form.scss";
 
 
-
+input[type="text"], input[type="number"], input[type="date"], select{
+  margin: 8px 8px;
+  padding: 5px 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  height: 38px;
+}
 
 .main-page {
   display: grid;
