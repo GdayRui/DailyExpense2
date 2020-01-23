@@ -1,5 +1,5 @@
 import React from "react";
-// import "./App.scss";
+import "./App.scss";
 import "./Sass/main.scss";
 import Login from "./Components/Login";
 import Header from "./Components/Header";

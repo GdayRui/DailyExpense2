@@ -51,7 +51,7 @@ class MainPage extends React.Component {
     return (
       <div className="main-page">
         <div>
-          <QuickSearch />
+          <QuickSearch />   
           <Filter onApplyFilter={this.handleFilterResult} />
         </div>
 
