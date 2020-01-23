@@ -10,14 +10,44 @@ class ExpenseForm extends React.Component {
         Date: "",
         Description: "",
         Amount: "",
-        Category: "",
-        Comment: "",
+        CategoryName: "",
+        Comments: "",
         isSelected: false
       },
-      category: ["Grocery", "Petrol", "Education", "Insurance", "Others"],
+      category: ["Grocery", "Petrol", "Education", "Insurance", "Other"],
       isError: false
     };
   }
+
+  onSubmitForm = () => {
+    debugger;
+    if (this.state.newRecord.Amount === "") {
+      this.setState({ isError: true });
+    } else {
+      let r = this.state.newRecord;
+      r.CategoryName = document.getElementById("category").value;
+      this.setState({ newRecord: r });
+      this.props.onAddNewRecord(this.state.newRecord);
+    }
+  };
+
+  // get value of new record using onChange fn
+  handleInputChange = e => {
+    let newRecord = this.state.newRecord;
+    if (e.target.id === "date") {
+      newRecord.DateTime = e.target.value;
+    } else if (e.target.id === "category") {
+      newRecord.CategoryName = e.target.value;
+    } else if (e.target.id === "item-name") {
+      newRecord.Description = e.target.value;
+    } else if (e.target.id === "amount") {
+      newRecord.Amount = e.target.value;
+    } else if (e.target.id === "comments") {
+      newRecord.Comments = e.target.value;
+    }
+
+    this.setState({ newRecord: newRecord });
+  };
 
   render() {
     return (
@@ -28,7 +58,6 @@ class ExpenseForm extends React.Component {
               id="date"
               className="form-control"
               type="date"
-              value={this.state.newRecord.Date} // option 1: remove this line, otherwise the date will always be  ''
               onChange={this.handleInputChange}
             />
           </div>
@@ -36,7 +65,6 @@ class ExpenseForm extends React.Component {
             <select
               id="category"
               className="form-control"
-              value={this.state.newRecord.Category} // option 1: remove this line
               onChange={this.handleInputChange}
             >
               <option value="Grocery">Grocery</option>
