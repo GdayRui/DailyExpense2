@@ -1,4 +1,39 @@
-.filter{
-    background-color: rgba(255, 255, 255, 0.8);
+.filter {
+  border: black;
+  background-color: rgb(240, 240, 240);
+  height: 20rem;
+  padding: 1rem;
 
+  input[type="text"], input[type="date"]{
+    margin: 0 8px;
+    padding: 5px 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  div {
+    margin: 1rem;
+  }
+
+  .filter-date-range {
+    background-color: white;
+    padding: 0.5rem;
+  }
+  .filter-amount-range {
+    background-color: white;
+    padding: 0.5rem;
+
+    input[type="text"] {
+      width: 30%;
+    }
+  }
+
+  .btn-apply-filter{
+    padding: 10px 5px;
+    border: 0px solid #ccc;
+    border-radius: 5px;
+    background-color: $primaryColor;
+    color: $secondaryColor;
+    width: 100%;
+  }
 }

@@ -15,7 +15,7 @@ class ExpenseList extends React.Component {
   render() {
     let listJsx = this.state.data.map(item => {
       return (
-        <tr>
+        <tr key={item.id}>
           <td>{item.Description}</td>
           <td>{item.Amount}</td>
           <td>{item.Category}</td>
@@ -26,12 +26,14 @@ class ExpenseList extends React.Component {
       <div className="grid-item expense-list">
         <h2>Expense List Page</h2>
         <table>
-          <tr>
-            <th>Description</th>
-            <th>Amount</th>
-            <th>Category</th>
-          </tr>
-          {listJsx}
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Category</th>
+            </tr>
+          </thead>
+          <tbody>{listJsx}</tbody>
         </table>
       </div>
     );
