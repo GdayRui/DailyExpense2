@@ -17,7 +17,6 @@ class Filter extends React.Component {
 
   handleApplyFilter = () => {
     // Call API to get filtered result(data) and update to table
-    // debugger;
     fetch("http://localhost:50204/api/Expense/filter", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -31,7 +30,6 @@ class Filter extends React.Component {
 
   handleInputChange = e => {
     let filterObj = this.state.filterObj;
-    // debugger;
     switch (e.target.id) {
       case "start-date":
         filterObj.startDate = e.target.value;
@@ -47,7 +45,7 @@ class Filter extends React.Component {
         break;
       default:
         break;
-    }
+    };
   };
 
   render() {
@@ -61,7 +59,6 @@ class Filter extends React.Component {
               id="start-date"
               className="form-control"
               type="date"
-              value={this.state.filterObj.startDate}
               onChange={this.handleInputChange}
             />
           </div>
@@ -72,7 +69,6 @@ class Filter extends React.Component {
               id="end-date"
               className="form-control"
               type="date"
-              value={this.state.filterObj.startDate}
               onChange={this.handleInputChange}
             />
           </div>
