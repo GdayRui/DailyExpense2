@@ -16,6 +16,7 @@
     th {
       background-color: $primaryColor;
       color: $secondaryColor;
+      cursor: pointer;
     }
 
     tr:nth-child(even):not(th) {
@@ -25,5 +26,11 @@
     tr:hover:not(th) {
       background-color: #d4e6ec;
     }
+  }
+
+  .faCaretDown {
+    -ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Safari 3-8 */
+    transform: rotate(180deg);
   }
 }

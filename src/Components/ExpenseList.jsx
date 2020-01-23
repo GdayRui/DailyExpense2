@@ -22,6 +22,7 @@ class ExpenseList extends React.Component {
     return { data: props.data };
   }
 
+  // Toggle select rows
   handleSelected = id => {
     let numSelectedRecords = this.state.numSelectedRecords;
 
@@ -40,6 +41,94 @@ class ExpenseList extends React.Component {
       }
     }
   }
+
+  // Sort the data each column
+  handleSort = type => {
+    debugger;
+    const compareItem = (a, b) => {
+      const itemA = a.description.toUpperCase();
+      const itemB = b.description.toUpperCase();
+      // ** cannot compare 2 strings. this compare fn only return 0, 1, -1.
+      // return itemA>itemB?1:-1;
+      let comparison = 0;
+      if (itemA > itemB) {
+        this.state.ascending ? (comparison = 1) : (comparison = -1);
+      } else if (itemA < itemB) {
+        this.state.ascending ? (comparison = -1) : (comparison = 1);
+      }
+      return comparison;
+    };
+
+    const compareAmount = (a, b) => {
+      return this.state.ascending ? a.amount - b.amount : b.amount - a.amount;
+    };
+
+    const compareComment = (a, b) => {
+      const commentA = a.comments.toUpperCase();
+      const commentB = b.comments.toUpperCase();
+      let comparison = 0;
+      if (commentA > commentB) {
+        this.state.ascending ? (comparison = 1) : (comparison = -1);
+      } else if (commentA < commentB) {
+        this.state.ascending ? (comparison = -1) : (comparison = 1);
+      }
+      return comparison;
+    };
+
+    const compareCategory = (a, b) => {
+      const categoryA = a.categoryName.toUpperCase();
+      const categoryB = b.categoryName.toUpperCase();
+      let comparison = 0;
+      if (categoryA > categoryB) {
+        this.state.ascending ? (comparison = 1) : (comparison = -1);
+      } else if (categoryA < categoryB) {
+        this.state.ascending ? (comparison = -1) : (comparison = 1);
+      }
+      return comparison;
+    };
+
+    const compareDate = (a, b) => {
+      const dateA = new Date(a.dateTime);
+      const dateB = new Date(b.dateTime);
+      let comparison = 0;
+      if (dateA > dateB) {
+        this.state.ascending ? (comparison = 1) : (comparison = -1);
+      } else if (dateA < dateB) {
+        this.state.ascending ? (comparison = -1) : (comparison = 1);
+      }
+      return comparison;
+    };
+
+    switch (type) {
+      case "Amount":
+        this.state.data.sort(compareAmount);
+        this.state.dataFiltered.sort(compareAmount);
+        break;
+      case "Item":
+        this.state.data.sort(compareItem);
+        this.state.dataFiltered.sort(compareItem);
+        break;
+      case "Comment":
+        this.state.data.sort(compareComment);
+        this.state.dataFiltered.sort(compareComment);
+        break;
+      case "Category":
+        this.state.data.sort(compareCategory);
+        this.state.dataFiltered.sort(compareCategory);
+        break;
+      case "Date":
+        this.state.data.sort(compareDate);
+        this.state.dataFiltered.sort(compareDate);
+        break;
+      default:
+        break;
+    }
+
+    this.setState({
+      sortingColumn: type,
+      ascending: !this.state.ascending
+    });
+  };
 
   render() {
     debugger;

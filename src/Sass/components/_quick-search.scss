@@ -1,3 +1,15 @@
-.quick-search{
-    margin: 1rem;
+.quick-search {
+  margin: 1rem;
+
+  input {
+    width: 80%;
+    margin: 0;
+    left: 8px;
+    position: relative;
+  }
+  .search-icon {
+    left: -35px;
+    top: 2px;
+    position: relative;
+  }
 }
