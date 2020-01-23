@@ -30,7 +30,7 @@ class Filter extends React.Component {
 
   render() {
     return (
-      <div>
+      <div class="grid-item filter">
         <h2>Filter Name</h2>
         <p>fdasfdsfdsfdas</p>
         <input

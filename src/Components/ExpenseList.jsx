@@ -1,5 +1,5 @@
 import React from "react";
-//import './App.css';
+//import '../Sass/components/_ExpenseList.scss';
 
 class ExpenseList extends React.Component {
   constructor(props) {
@@ -7,7 +7,7 @@ class ExpenseList extends React.Component {
     this.state = { data: [] };
   }
 
-  // If ExpenseList component gets updated, this method is called.
+  // If 'data' from MainPage changes, this method is called, ExpenseList component gets updated.
   static getDerivedStateFromProps(props, state) {
     return { data: props.data };
   }
@@ -23,7 +23,7 @@ class ExpenseList extends React.Component {
       );
     });
     return (
-      <div>
+      <div className="grid-item expense-list">
         <h2>Expense List Page</h2>
         <table>
           <tr>
