@@ -9,12 +9,13 @@
     td {
       height: 30px;
       border: 0px solid rgb(145, 145, 145);
-  padding: 8px;
+      padding: 8px;
+      min-width: 20px;
     }
-    
-    th{
-        background-color: $primaryColor;
-        color: $secondaryColor;
+
+    th {
+      background-color: $primaryColor;
+      color: $secondaryColor;
     }
 
     tr:nth-child(even):not(th) {

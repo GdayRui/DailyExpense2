@@ -8,7 +8,6 @@ class ExpenseList extends React.Component {
     super(props);
     this.state = {
       ascending: true,
-      isMainPage: true,
       data: [],
       dataFiltered: [],
       storageKey: "expenseList",
@@ -23,11 +22,30 @@ class ExpenseList extends React.Component {
     return { data: props.data };
   }
 
+  handleSelected = id => {
+    let numSelectedRecords = this.state.numSelectedRecords;
+
+    for (let i = 0; i < this.state.data.length; i++) {
+      if (id === this.state.data[i].id) {
+        let tmpData = this.state.data;
+
+        tmpData[i].isSelected = !tmpData[i].isSelected;
+        tmpData[i].isSelected ? numSelectedRecords++ : numSelectedRecords--;
+
+        this.setState({
+          numSelectedRecords: numSelectedRecords,
+          data: tmpData
+        });
+        return;
+      }
+    }
+  }
+
   render() {
     debugger;
     let listJsx = this.state.data.map(item => {
       return (
-        <tr key={item.id} onClick={() => this.handleSelected(item.Id)}>
+        <tr key={item.id} onClick={() => this.handleSelected(item.id)}>
           <td>{item.dateTime}</td>
           <td>{item.description}</td>
           <td>{item.amount}</td>
