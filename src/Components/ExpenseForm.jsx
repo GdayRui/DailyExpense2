@@ -7,7 +7,7 @@ class ExpenseForm extends React.Component {
     this.state = {
       newRecord: {
         Id: 0,
-        Date: "",
+        DateTime: "",
         Description: "",
         Amount: "",
         CategoryName: "",

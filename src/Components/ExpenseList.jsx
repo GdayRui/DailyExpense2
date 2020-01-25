@@ -40,7 +40,7 @@ class ExpenseList extends React.Component {
         return;
       }
     }
-  }
+  };
 
   // Sort the data each column
   handleSort = type => {
@@ -133,9 +133,15 @@ class ExpenseList extends React.Component {
   render() {
     debugger;
     let listJsx = this.state.data.map(item => {
+      let dt = new Date(item.dateTime);
+
       return (
         <tr key={item.id} onClick={() => this.handleSelected(item.id)}>
-          <td>{item.dateTime}</td>
+          <td>{`${dt.getFullYear()}-${
+            dt.getMonth() > 9 ? "" : "0"
+          }${dt.getMonth() + 1}-${
+            dt.getDate() > 10 ? "" : "0"
+          }${dt.getDate()}`}</td>
           <td>{item.description}</td>
           <td>{item.amount}</td>
           <td>{item.categoryName}</td>
@@ -153,7 +159,7 @@ class ExpenseList extends React.Component {
     return (
       <div className="expense-list">
         <table>
-        <thead>
+          <thead>
             <tr>
               <th onClick={() => this.handleSort("Date")}>
                 Date{" "}
