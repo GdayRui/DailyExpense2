@@ -9,7 +9,6 @@ class ExpenseList extends React.Component {
     this.state = {
       ascending: true,
       data: [],
-      dataFiltered: [],
       storageKey: "expenseList",
       numSelectedRecords: 0,
       sortingColumn: ""
@@ -102,23 +101,18 @@ class ExpenseList extends React.Component {
     switch (type) {
       case "Amount":
         this.state.data.sort(compareAmount);
-        this.state.dataFiltered.sort(compareAmount);
         break;
       case "Item":
         this.state.data.sort(compareItem);
-        this.state.dataFiltered.sort(compareItem);
         break;
       case "Comment":
         this.state.data.sort(compareComment);
-        this.state.dataFiltered.sort(compareComment);
         break;
       case "Category":
         this.state.data.sort(compareCategory);
-        this.state.dataFiltered.sort(compareCategory);
         break;
       case "Date":
         this.state.data.sort(compareDate);
-        this.state.dataFiltered.sort(compareDate);
         break;
       default:
         break;

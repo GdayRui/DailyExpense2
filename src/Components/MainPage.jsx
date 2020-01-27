@@ -9,13 +9,19 @@ class MainPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      expenseList: []
+      expenseList: [],
+      quickSearchResult: []
     };
+  }
+
+  handleQuickSearch = quickSearchResult => {
+    this.setState({ quickSearchResult: quickSearchResult});
   }
 
   handleFilterResult = filterResult => {
     // using filterd result to update expense list
     this.setState({ expenseList: filterResult });
+    this.setState({ quickSearchResult: filterResult});
   };
 
   handleAddNewRecord = newRecord => {
@@ -32,18 +38,18 @@ class MainPage extends React.Component {
         list.push(addedRecord);
 
         this.setState({ expenseList: list });
+        this.setState({ quickSearchResult: list});
       });
   };
 
   //
   componentDidMount() {
-    debugger;
     fetch("http://localhost:50204/api/Expense")
       .then(resp => resp.json())
       .then(data => {
         console.log(data);
-        this.setState({ expenseList: data })
-        debugger;
+        this.setState({ expenseList: data });
+        this.setState({ quickSearchResult: data});
     });
   }
 
@@ -51,13 +57,13 @@ class MainPage extends React.Component {
     return (
       <div className="main-page">
         <div>
-          <QuickSearch />   
+          <QuickSearch data={this.state.expenseList} onQuickSearch={this.handleQuickSearch} />   
           <Filter onApplyFilter={this.handleFilterResult} />
         </div>
 
         <div>
           <ExpenseForm onAddNewRecord={this.handleAddNewRecord} />
-          <ExpenseList data={this.state.expenseList} />
+          <ExpenseList data={this.state.quickSearchResult} />
         </div>
       </div>
     );
