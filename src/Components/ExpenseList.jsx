@@ -25,6 +25,8 @@ class ExpenseList extends React.Component {
   handleSelected = id => {
     let numSelectedRecords = this.state.numSelectedRecords;
 
+    debugger;
+
     for (let i = 0; i < this.state.data.length; i++) {
       if (id === this.state.data[i].id) {
         let tmpData = this.state.data;
