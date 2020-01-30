@@ -19,25 +19,15 @@ class MainPage extends React.Component {
 
   // delete all records that marked as "selected"
   handleDelete = () => {
-    // Filter elements that are selected
-    const expenseList = this.state.expenseList;
-    let selectedElem = expenseList.filter(item => {
-      if (item.isSelected === true) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-
-    // Put all selected elements' ids into new array
-    const selectedElemIds = selectedElem.map(item => item.id);
+    // Find element ids
+    const idList = this.state.expenseList.filter(item => item.isSelected).map(item => item.id);
 
     // Post the new array which includs all selected elements' ids to sever
     // Then reload data from sever
     fetch("http://localhost:50204/api/Expense/delete", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(selectedElemIds)
+      body: JSON.stringify(idList)
     })
       .then(resp => resp.json())
       .then(data => {
