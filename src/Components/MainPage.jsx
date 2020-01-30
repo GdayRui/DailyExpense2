@@ -20,7 +20,9 @@ class MainPage extends React.Component {
   // delete all records that marked as "selected"
   handleDelete = () => {
     // Find element ids
-    const idList = this.state.expenseList.filter(item => item.isSelected).map(item => item.id);
+    const idList = this.state.expenseList
+      .filter(item => item.isSelected)
+      .map(item => item.id);
 
     // Post the new array which includs all selected elements' ids to sever
     // Then reload data from sever
@@ -35,14 +37,17 @@ class MainPage extends React.Component {
           .then(resp => resp.json())
           .then(data => {
             const modifiedData = this.addFlagToList(data);
-            this.setState({ expenseList: modifiedData, quickSearchResult: modifiedData });
+            this.setState({
+              expenseList: modifiedData,
+              quickSearchResult: modifiedData
+            });
           });
       });
-  };
+  }
 
   handleQuickSearch = quickSearchResult => {
     this.setState({ quickSearchResult: quickSearchResult });
-  };
+  }
 
   // add isSelected flag to each element of data list
   addFlagToList = dataList => {
@@ -50,15 +55,18 @@ class MainPage extends React.Component {
       item.isSelected = false;
       return item;
     });
-  };
+  }
 
   handleFilterResult = filterResult => {
     // add flags to filter result
     const modifiedData = this.addFlagToList(filterResult);
 
     // using filterd result to update expense list
-    this.setState({ expenseList: modifiedData, quickSearchResult: modifiedData });
-  };
+    this.setState({
+      expenseList: modifiedData,
+      quickSearchResult: modifiedData
+    });
+  }
 
   handleAddNewRecord = newRecord => {
     // debugger;
@@ -77,7 +85,11 @@ class MainPage extends React.Component {
 
         this.setState({ expenseList: list, quickSearchResult: list });
       });
-  };
+  }
+
+  handleToggleSelect = numSelectedRecords => {
+    this.setState({numSelectedRecords: numSelectedRecords})
+  }
 
   // load data from sever after render
   componentDidMount() {
@@ -86,7 +98,10 @@ class MainPage extends React.Component {
       .then(data => {
         const modifiedData = this.addFlagToList(data);
 
-        this.setState({ expenseList: modifiedData, quickSearchResult: modifiedData });
+        this.setState({
+          expenseList: modifiedData,
+          quickSearchResult: modifiedData
+        });
       });
   }
 
@@ -107,7 +122,10 @@ class MainPage extends React.Component {
             onDelete={this.handleDelete}
             numSelectedRecords={this.state.numSelectedRecords}
           />
-          <ExpenseList data={this.state.quickSearchResult} />
+          <ExpenseList
+            data={this.state.quickSearchResult}
+            onToggleSelect={this.handleToggleSelect}
+          />
         </div>
       </div>
     );

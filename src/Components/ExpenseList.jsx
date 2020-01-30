@@ -38,10 +38,12 @@ class ExpenseList extends React.Component {
           numSelectedRecords: numSelectedRecords,
           data: tmpData
         });
+
+        this.props.onToggleSelect(numSelectedRecords);
         return;
       }
     }
-  };
+  }
 
   // Sort the data each column
   handleSort = type => {
@@ -124,7 +126,7 @@ class ExpenseList extends React.Component {
       sortingColumn: type,
       ascending: !this.state.ascending
     });
-  };
+  }
 
   render() {
     debugger;
