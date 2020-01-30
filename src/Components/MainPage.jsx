@@ -4,6 +4,7 @@ import Filter from "./Filter";
 import ExpenseForm from "./ExpenseForm";
 import QuickSearch from "./QuickSearch";
 import DeleteRecords from "./DeleteRecords";
+import ExpenseService from "../Services/expenseService";
 import "../Sass/main.scss";
 
 class MainPage extends React.Component {
@@ -11,40 +12,62 @@ class MainPage extends React.Component {
     super(props);
     this.state = {
       expenseList: [],
-      quickSearchResult: []
+      quickSearchResult: [],
+      numSelectedRecords: 2
     };
   }
 
+  // delete all records that marked as "selected"
   handleDelete = () => {
-    // delete all records that marked as "selected"
+    // Filter elements that are selected
+    const expenseList = this.state.expenseList;
+    let selectedElem = expenseList.filter(item => {
+      if (item.isSelected === true) {
+        return true;
+      } else {
+        return false;
+      }
+    });
 
-    // call API
+    // Put all selected elements' ids into new array
+    const selectedElemIds = selectedElem.map(item => item.id);
 
-
-
-    // refresh component
-    this.setState({expenseList: this.state.expenseList});
+    // Post the new array which includs all selected elements' ids to sever
+    // Then reload data from sever
+    fetch("http://localhost:50204/api/Expense/delete", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(selectedElemIds)
+    })
+      .then(resp => resp.json())
+      .then(data => {
+        fetch("http://localhost:50204/api/Expense")
+          .then(resp => resp.json())
+          .then(data => {
+            this.setState({ expenseList: data, quickSearchResult: data });
+          });
+      });
   };
 
   handleQuickSearch = quickSearchResult => {
-    this.setState({ quickSearchResult: quickSearchResult});
-  }
+    this.setState({ quickSearchResult: quickSearchResult });
+  };
 
   // add isSelected flag to each element of data list
-  addFlagToList = (dataList) => {
-    return dataList.map(item=>{
+  addFlagToList = dataList => {
+    return dataList.map(item => {
       item.isSelected = false;
       return item;
-    })
-  }
+    });
+  };
 
   handleFilterResult = filterResult => {
     // add flags to filter result
-    let modifiedData =  this.addFlagToList(filterResult);
+    let modifiedData = this.addFlagToList(filterResult);
 
     // using filterd result to update expense list
     this.setState({ expenseList: modifiedData });
-    this.setState({ quickSearchResult: modifiedData});
+    this.setState({ quickSearchResult: modifiedData });
     //this.setState({ expenseList: filterResult });
     //this.setState({ quickSearchResult: filterResult});
   };
@@ -61,46 +84,42 @@ class MainPage extends React.Component {
       .then(addedRecord => {
         // add flag to this new record obj
         addedRecord.isSelected = false;
-        let list = this.state.expenseList;
+        const list = this.state.expenseList;
         list.push(addedRecord);
 
         this.setState({ expenseList: list });
-        this.setState({ quickSearchResult: list});
+        this.setState({ quickSearchResult: list });
       });
   };
 
-  // load data from sever
+  // load data from sever after render
   componentDidMount() {
     fetch("http://localhost:50204/api/Expense")
       .then(resp => resp.json())
       .then(data => {
-        console.log(data);
+        const modifiedData = this.addFlagToList(data);
 
-        let modifiedData = this.addFlagToList(data);
-
-        // let modifiedData = data.map(item=>{
-        //   item.isSelected = false;
-        //   return item;
-        // })
-
-        this.setState({ expenseList: modifiedData });
-        this.setState({ quickSearchResult: modifiedData});
-        //this.setState({ expenseList: data });
-        //this.setState({ quickSearchResult: data});
-    });
+        this.setState({ expenseList: modifiedData, quickSearchResult: modifiedData });
+      });
   }
 
   render() {
     return (
       <div className="main-page">
         <div>
-          <QuickSearch data={this.state.expenseList} onQuickSearch={this.handleQuickSearch} />   
+          <QuickSearch
+            data={this.state.expenseList}
+            onQuickSearch={this.handleQuickSearch}
+          />
           <Filter onApplyFilter={this.handleFilterResult} />
         </div>
 
         <div>
           <ExpenseForm onAddNewRecord={this.handleAddNewRecord} />
-          <DeleteRecords onDelete={this.handleDelete} numSelected={0} />
+          <DeleteRecords
+            onDelete={this.handleDelete}
+            numSelectedRecords={this.state.numSelectedRecords}
+          />
           <ExpenseList data={this.state.quickSearchResult} />
         </div>
       </div>
