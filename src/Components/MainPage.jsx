@@ -13,7 +13,7 @@ class MainPage extends React.Component {
     this.state = {
       expenseList: [],
       quickSearchResult: [],
-      numSelectedRecords: 2
+      numSelectedRecords: 0
     };
   }
 
@@ -34,7 +34,8 @@ class MainPage extends React.Component {
         fetch("http://localhost:50204/api/Expense")
           .then(resp => resp.json())
           .then(data => {
-            this.setState({ expenseList: data, quickSearchResult: data });
+            const modifiedData = this.addFlagToList(data);
+            this.setState({ expenseList: modifiedData, quickSearchResult: modifiedData });
           });
       });
   };
@@ -53,13 +54,10 @@ class MainPage extends React.Component {
 
   handleFilterResult = filterResult => {
     // add flags to filter result
-    let modifiedData = this.addFlagToList(filterResult);
+    const modifiedData = this.addFlagToList(filterResult);
 
     // using filterd result to update expense list
-    this.setState({ expenseList: modifiedData });
-    this.setState({ quickSearchResult: modifiedData });
-    //this.setState({ expenseList: filterResult });
-    //this.setState({ quickSearchResult: filterResult});
+    this.setState({ expenseList: modifiedData, quickSearchResult: modifiedData });
   };
 
   handleAddNewRecord = newRecord => {
@@ -77,8 +75,7 @@ class MainPage extends React.Component {
         const list = this.state.expenseList;
         list.push(addedRecord);
 
-        this.setState({ expenseList: list });
-        this.setState({ quickSearchResult: list });
+        this.setState({ expenseList: list, quickSearchResult: list });
       });
   };
 
