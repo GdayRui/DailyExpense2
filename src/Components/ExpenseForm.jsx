@@ -14,13 +14,14 @@ class ExpenseForm extends React.Component {
         Comments: "",
         isSelected: false
       },
-      category: ["Grocery", "Petrol", "Education", "Insurance", "Other"],
+      // category: ["Grocery", "Petrol", "Education", "Insurance", "Other"],
+      category: [],
       isError: false
     };
   }
 
   onSubmitForm = () => {
-    debugger;
+    // debugger;
     if (this.state.newRecord.Amount === "") {
       this.setState({ isError: true });
     } else {
@@ -49,7 +50,29 @@ class ExpenseForm extends React.Component {
     this.setState({ newRecord: newRecord });
   };
 
+  // get categories obj list from sever, includs 'id' & 'categoryName'
+  componentDidMount(){
+    fetch("http://localhost:50204/api/Expense/Categories")
+    .then(resp => resp.json())
+    .then(categories => {
+      debugger;
+      this.setState({
+        category: categories
+      });
+    });
+  }
+
   render() {
+    // debugger;
+
+    // Form Category options
+    const categoryNames = this.state.category.map(ele => {
+      return (
+      <option>{ele.categoryName}</option>
+      )
+    })
+
+    // Form
     return (
       <div className="expense-form">
         <form>
@@ -67,11 +90,13 @@ class ExpenseForm extends React.Component {
               className="form-control"
               onChange={this.handleInputChange}
             >
-              <option value="Grocery">Grocery</option>
+              {categoryNames}
+              {/* hard code of categories*/}
+              {/* <option value="Grocery">Grocery</option>
               <option>Petrol</option>
               <option>Education</option>
               <option>Insurance</option>
-              <option>Others</option>
+              <option>Others</option> */}
             </select>
           </div>
           <div className="form-group">
