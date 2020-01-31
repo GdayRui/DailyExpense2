@@ -17,7 +17,7 @@ class ExpenseList extends React.Component {
 
   // If 'data' from MainPage changes, this method is called, ExpenseList component gets updated.
   static getDerivedStateFromProps(props, state) {
-    debugger;
+    // debugger;
     return { data: props.data };
   }
 

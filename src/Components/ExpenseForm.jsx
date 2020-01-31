@@ -11,30 +11,57 @@ class ExpenseForm extends React.Component {
         Description: "",
         Amount: "",
         CategoryName: "",
-        Comments: "",
-        isSelected: false
+        Comments: ""
       },
-      // category: ["Grocery", "Petrol", "Education", "Insurance", "Other"],
       category: [],
       isError: false
     };
   }
 
   onSubmitForm = () => {
-    // debugger;
-    if (this.state.newRecord.Amount === "") {
+    const r = this.state.newRecord;
+    if (
+      r.Amount === "" ||
+      r.Description === "" 
+      // r.DateTime === "" ||
+      // r.CategoryName === ""
+    ) {
       this.setState({ isError: true });
     } else {
-      let r = this.state.newRecord;
       r.CategoryName = document.getElementById("category").value;
       this.setState({ newRecord: r });
+
+      // update newRecord to MainPage
       this.props.onAddNewRecord(this.state.newRecord);
+
+      // clear inputs once 'Submit' button is clicked
+      document.getElementById("expense-form").reset();
     }
   };
 
   // get value of new record using onChange fn
   handleInputChange = e => {
-    let newRecord = this.state.newRecord;
+    const newRecord = this.state.newRecord;
+    // const isSubmit = this.state.isSubmit;
+
+    // if (e.target.id === "date" && isSubmit === false) {
+    //   newRecord.DateTime = e.target.value;
+    // } else if (e.target.id === "category"  && isSubmit === false) {
+    //   newRecord.CategoryName = e.target.value;
+    // } else if (e.target.id === "item-name"  && isSubmit === false) {
+    //   newRecord.Description = e.target.value;
+    // } else if (e.target.id === "amount"  && isSubmit === false) {
+    //   newRecord.Amount = e.target.value;
+    // } else if (e.target.id === "comments"  && isSubmit === false) {
+    //   newRecord.Comments = e.target.value;
+    // } else if (isSubmit === true) {
+    //   newRecord.DateTime = "";
+    //   newRecord.Description = "";
+    //   newRecord.Amount = "";
+    //   newRecord.CategoryName = "";
+    //   newRecord.Comments = "";
+    // }
+
     if (e.target.id === "date") {
       newRecord.DateTime = e.target.value;
     } else if (e.target.id === "category") {
@@ -51,31 +78,28 @@ class ExpenseForm extends React.Component {
   };
 
   // get categories obj list from sever, includs 'id' & 'categoryName'
-  componentDidMount(){
+  componentDidMount() {
     fetch("http://localhost:50204/api/Expense/Categories")
-    .then(resp => resp.json())
-    .then(categories => {
-      debugger;
-      this.setState({
-        category: categories
+      .then(resp => resp.json())
+      .then(categories => {
+        this.setState({
+          category: categories
+        });
       });
-    });
   }
 
   render() {
     // debugger;
-
+    console.log('render');
     // Form Category options
     const categoryNames = this.state.category.map(ele => {
-      return (
-      <option>{ele.categoryName}</option>
-      )
-    })
+      return <option>{ele.categoryName}</option>;
+    });
 
     // Form
     return (
       <div className="expense-form">
-        <form>
+        <form id="expense-form">
           <div className="form-group">
             <input
               id="date"
