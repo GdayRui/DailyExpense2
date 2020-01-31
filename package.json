@@ -2,6 +2,7 @@
   "name": "daily_expense2",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://gdayrui.github.io/DailyExpense2/",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.26",
     "@fortawesome/free-solid-svg-icons": "^5.12.0",
@@ -35,5 +36,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^2.2.0"
   }
 }
