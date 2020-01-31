@@ -4,7 +4,7 @@ import "./Sass/main.scss";
 import Login from "./Components/Login";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
-import MainPage from './Components/MainPage';
+import MainPage from "./Components/MainPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -13,8 +13,11 @@ function App() {
       <div className="App">
         <Header />
         <Switch>
-          <Route path="/" exact component={Login} />
-          <Route path="/expense" component={MainPage} />
+          <Route path={process.env.PUBLIC_URL + "/"} exact component={Login} />
+          <Route
+            path={process.env.PUBLIC_URL + "/expense"}
+            component={MainPage}
+          />
         </Switch>
         <Footer />
       </div>
