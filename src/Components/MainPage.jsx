@@ -4,7 +4,7 @@ import Filter from "./Filter";
 import ExpenseForm from "./ExpenseForm";
 import QuickSearch from "./QuickSearch";
 import DeleteRecords from "./DeleteRecords";
-import ExpenseService from "../Services/expenseService";
+import expenseService from "../Services/expenseService";
 import "../Sass/main.scss";
 
 class MainPage extends React.Component {
@@ -26,14 +26,18 @@ class MainPage extends React.Component {
 
     // Post the new array which includs all selected elements' ids to sever
     // Then reload data from sever
-    fetch("http://localhost:50204/api/Expense/delete", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(idList)
-    })
+    // fetch("http://localhost:50204/api/Expense/delete", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(idList)
+    // })
+    expenseService
+      .deleteExpense(idList)
       .then(resp => resp.json())
       .then(data => {
-        fetch("http://localhost:50204/api/Expense")
+        // fetch("http://localhost:50204/api/Expense")
+        expenseService
+          .getAllExpense()
           .then(resp => resp.json())
           .then(data => {
             const modifiedData = this.addFlagToList(data);
@@ -43,11 +47,11 @@ class MainPage extends React.Component {
             });
           });
       });
-  }
+  };
 
   handleQuickSearch = quickSearchResult => {
     this.setState({ quickSearchResult: quickSearchResult });
-  }
+  };
 
   // add isSelected flag to each element of data list
   addFlagToList = dataList => {
@@ -55,7 +59,7 @@ class MainPage extends React.Component {
       item.isSelected = false;
       return item;
     });
-  }
+  };
 
   handleFilterResult = filterResult => {
     // add flags to filter result
@@ -66,16 +70,18 @@ class MainPage extends React.Component {
       expenseList: modifiedData,
       quickSearchResult: modifiedData
     });
-  }
+  };
 
   handleAddNewRecord = newRecord => {
     // debugger;
     // Call API to post new record to server and update to table
-    fetch("http://localhost:50204/api/Expense", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newRecord)
-    })
+    // fetch("http://localhost:50204/api/Expense", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(newRecord)
+    // })
+    expenseService
+      .addNew(newRecord)
       .then(resp => resp.json())
       .then(addedRecord => {
         // add flag to this new record obj
@@ -85,15 +91,17 @@ class MainPage extends React.Component {
 
         this.setState({ expenseList: list, quickSearchResult: list });
       });
-  }
+  };
 
   handleToggleSelect = numSelectedRecords => {
-    this.setState({numSelectedRecords: numSelectedRecords})
-  }
+    this.setState({ numSelectedRecords: numSelectedRecords });
+  };
 
   // load data from sever after render
   componentDidMount() {
-    fetch("http://localhost:50204/api/Expense")
+    //fetch("http://localhost:50204/api/Expense")
+    expenseService
+      .getAllExpense()
       .then(resp => resp.json())
       .then(data => {
         const modifiedData = this.addFlagToList(data);

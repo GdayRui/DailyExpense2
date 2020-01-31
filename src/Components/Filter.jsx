@@ -1,4 +1,5 @@
 import React from "react";
+import expenseService from "../Services/expenseService";
 //import './App.css';
 
 class Filter extends React.Component {
@@ -17,11 +18,13 @@ class Filter extends React.Component {
 
   handleApplyFilter = () => {
     // Call API to get filtered result(data) and update to table
-    fetch("http://localhost:50204/api/Expense/filter", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(this.state.filterObj)
-    })
+    // fetch("http://localhost:50204/api/Expense/filter", {
+    //   method: "POST",
+    //   headers: { "Content-Type": "application/json" },
+    //   body: JSON.stringify(this.state.filterObj)
+    // })
+    expenseService
+      .filterExpense(this.state.filterObj)
       .then(resp => resp.json())
       .then(filterResult => {
         this.props.onApplyFilter(filterResult);
@@ -45,7 +48,7 @@ class Filter extends React.Component {
         break;
       default:
         break;
-    };
+    }
   };
 
   render() {
@@ -80,10 +83,17 @@ class Filter extends React.Component {
         {/* filter by amount */}
         <div className="filter-amount-range">
           <p>Amount</p>
-          <input type="text" id="min-amount" onChange={this.handleInputChange} />
+          <input
+            type="text"
+            id="min-amount"
+            onChange={this.handleInputChange}
+          />
           <span>To</span>
-          <input type="text" id="max-amount" onChange={this.handleInputChange} />
-          
+          <input
+            type="text"
+            id="max-amount"
+            onChange={this.handleInputChange}
+          />
         </div>
 
         <div>

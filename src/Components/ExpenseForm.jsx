@@ -1,5 +1,6 @@
 import React from "react";
 import "../Sass/components/_expense-form.scss";
+import expenseService from "../Services/expenseService";
 
 class ExpenseForm extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class ExpenseForm extends React.Component {
     const r = this.state.newRecord;
     if (
       r.Amount === "" ||
-      r.Description === "" 
+      r.Description === ""
       // r.DateTime === "" ||
       // r.CategoryName === ""
     ) {
@@ -42,25 +43,6 @@ class ExpenseForm extends React.Component {
   // get value of new record using onChange fn
   handleInputChange = e => {
     const newRecord = this.state.newRecord;
-    // const isSubmit = this.state.isSubmit;
-
-    // if (e.target.id === "date" && isSubmit === false) {
-    //   newRecord.DateTime = e.target.value;
-    // } else if (e.target.id === "category"  && isSubmit === false) {
-    //   newRecord.CategoryName = e.target.value;
-    // } else if (e.target.id === "item-name"  && isSubmit === false) {
-    //   newRecord.Description = e.target.value;
-    // } else if (e.target.id === "amount"  && isSubmit === false) {
-    //   newRecord.Amount = e.target.value;
-    // } else if (e.target.id === "comments"  && isSubmit === false) {
-    //   newRecord.Comments = e.target.value;
-    // } else if (isSubmit === true) {
-    //   newRecord.DateTime = "";
-    //   newRecord.Description = "";
-    //   newRecord.Amount = "";
-    //   newRecord.CategoryName = "";
-    //   newRecord.Comments = "";
-    // }
 
     if (e.target.id === "date") {
       newRecord.DateTime = e.target.value;
@@ -79,7 +61,9 @@ class ExpenseForm extends React.Component {
 
   // get categories obj list from sever, includs 'id' & 'categoryName'
   componentDidMount() {
-    fetch("http://localhost:50204/api/Expense/Categories")
+    // fetch("http://localhost:50204/api/Expense/Categories")
+    expenseService
+      .getCategories()
       .then(resp => resp.json())
       .then(categories => {
         this.setState({
@@ -90,7 +74,7 @@ class ExpenseForm extends React.Component {
 
   render() {
     // debugger;
-    console.log('render');
+    console.log("render");
     // Form Category options
     const categoryNames = this.state.category.map(ele => {
       return <option>{ele.categoryName}</option>;
