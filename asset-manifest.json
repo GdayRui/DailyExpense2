@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/DailyExpense2/static/css/main.2b42b8c6.chunk.css",
-    "main.js": "/DailyExpense2/static/js/main.5aa8644b.chunk.js",
-    "main.js.map": "/DailyExpense2/static/js/main.5aa8644b.chunk.js.map",
+    "main.js": "/DailyExpense2/static/js/main.437804a4.chunk.js",
+    "main.js.map": "/DailyExpense2/static/js/main.437804a4.chunk.js.map",
     "runtime-main.js": "/DailyExpense2/static/js/runtime-main.8789c662.js",
     "runtime-main.js.map": "/DailyExpense2/static/js/runtime-main.8789c662.js.map",
     "static/js/2.b7e52a55.chunk.js": "/DailyExpense2/static/js/2.b7e52a55.chunk.js",
     "static/js/2.b7e52a55.chunk.js.map": "/DailyExpense2/static/js/2.b7e52a55.chunk.js.map",
     "index.html": "/DailyExpense2/index.html",
-    "precache-manifest.3409963fc78b61f0692d17cf404ed6b0.js": "/DailyExpense2/precache-manifest.3409963fc78b61f0692d17cf404ed6b0.js",
+    "precache-manifest.1def985cd8afca918faa53184ad7fac5.js": "/DailyExpense2/precache-manifest.1def985cd8afca918faa53184ad7fac5.js",
     "service-worker.js": "/DailyExpense2/service-worker.js",
     "static/css/main.2b42b8c6.chunk.css.map": "/DailyExpense2/static/css/main.2b42b8c6.chunk.css.map",
     "static/js/2.b7e52a55.chunk.js.LICENSE": "/DailyExpense2/static/js/2.b7e52a55.chunk.js.LICENSE"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.8789c662.js",
     "static/js/2.b7e52a55.chunk.js",
     "static/css/main.2b42b8c6.chunk.css",
-    "static/js/main.5aa8644b.chunk.js"
+    "static/js/main.437804a4.chunk.js"
   ]
 }
