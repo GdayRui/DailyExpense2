@@ -53,7 +53,7 @@ class Filter extends React.Component {
 
   render() {
     return (
-      <div className="grid-item filter">
+      <form className="grid-item filter">
         {/* filter by date */}
         <div className="filter-date-range">
           <div>
@@ -96,15 +96,22 @@ class Filter extends React.Component {
           />
         </div>
 
-        <div>
+        {/* filter btns */}
+        <div className="filter-btn">
           <input
             type="button"
             value="Apply Filter"
             className="btn-apply-filter"
             onClick={this.handleApplyFilter}
           />
+          <input
+            type="reset"
+            value="Reset Filter"
+            className="btn-reset-filter"
+            onClick={this.handleApplyFilter}
+          />
         </div>
-      </div>
+      </form>
     );
   }
 }
