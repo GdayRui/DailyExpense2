@@ -1,0 +1,19 @@
+@import "variables.scss";
+
+@mixin btn-dark {
+  padding: 10px 10px;
+  border: 0px solid #ccc;
+  border-radius: 5px;
+  background-color: $primaryColor;
+  color: $secondaryColor;
+  width: 100%;
+}
+
+@mixin btn-light {
+  padding: 10px 10px;
+  border: 1px solid $primaryColor;
+  border-radius: 5px;
+  background-color: $secondaryColor;
+  color: $primaryColor;
+  width: 100%;
+}
