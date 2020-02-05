@@ -116,7 +116,32 @@ class MainPage extends React.Component {
   render() {
     return (
       <div className="main-page">
-        <div>
+        <div className="nav">
+          {/* <User /> */}
+          <Filter onApplyFilter={this.handleFilterResult} />
+          {/* <Summary /> */}
+          {/* <Logo /> */}
+        </div>
+
+        <div className="main">
+          <ExpenseForm onAddNewRecord={this.handleAddNewRecord} />
+          <div>
+            <QuickSearch
+              data={this.state.expenseList}
+              onQuickSearch={this.handleQuickSearch}
+            />
+            <DeleteRecords
+              onDelete={this.handleDelete}
+              numSelectedRecords={this.state.numSelectedRecords}
+            />
+          </div>
+          <ExpenseList
+            data={this.state.quickSearchResult}
+            onToggleSelect={this.handleToggleSelect}
+          />
+        </div>
+
+        {/* <div>
           <QuickSearch
             data={this.state.expenseList}
             onQuickSearch={this.handleQuickSearch}
@@ -134,7 +159,7 @@ class MainPage extends React.Component {
             data={this.state.quickSearchResult}
             onToggleSelect={this.handleToggleSelect}
           />
-        </div>
+        </div> */}
       </div>
     );
   }

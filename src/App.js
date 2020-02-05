@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Header />
+        {/* <Header />
         <Switch>
           <Route path={process.env.PUBLIC_URL + "/"} exact component={Login} />
           <Route
@@ -19,7 +19,8 @@ function App() {
             component={MainPage}
           />
         </Switch>
-        <Footer />
+        <Footer /> */}
+        <MainPage />
       </div>
     </Router>
   );

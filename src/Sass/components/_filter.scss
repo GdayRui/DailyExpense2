@@ -1,29 +1,59 @@
 @import "../mixin.scss";
 
 .filter {
-  border: black;
-  background-color: rgb(240, 240, 240);
-  height: auto;
-  padding: 0.5rem;
-
-  div {
-    margin: 1rem;
-  }
+  display: grid;
+  grid-gap: 10px;
+  grid-template-rows: repeat(auto-fit, 1fr);
+  background-color: $background;
+  height: 50vh;
+  padding: 20px;
+  border-radius: 20px;
 
   .filter-date-range {
-    background-color: white;
-    padding: 8px;
-    input[type="date"] {
-      width: 100%;
+    display: grid;
+    grid-template-columns: auto;
+
+    label {
+      @include primaryFont;
+      text-align: left;
+    }
+
+    div {
+      align-items: stretch;
+
+      input[type="date"] {
+        width: 45%;
+      }
+
+      span {
+        color: $primaryColor;
+        font-size: 0.6rem;
+        margin: 0 3px;
+      }
     }
   }
-  .filter-amount-range {
-    background-color: white;
-    padding: 0.5rem;
-    padding-bottom: 1rem;
 
-    input[type="text"] {
-      width: 35%;
+  .filter-amount-range {
+    display: grid;
+    grid-template-columns: auto;
+
+    label {
+      @include primaryFont;
+      text-align: left;
+    }
+
+    div {
+      align-items: stretch;
+
+      input[type="text"] {
+        width: 45%;
+      }
+
+      span {
+        color: $primaryColor;
+        font-size: 0.6rem;
+        margin: 0 3px;
+      }
     }
   }
 
