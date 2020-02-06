@@ -12,7 +12,6 @@
   .filter-date-range {
     display: grid;
     grid-template-rows: 1fr 1fr;
-    grid-gap: 10px;
 
     div {
       label {
@@ -36,26 +35,16 @@
 
   .filter-categories {
     display: grid;
-    grid-gap: 20px;
-    grid-template-rows: auto;
-
-    label {
-      @include primary-font;
-      text-align: left;
-    }
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
 
     div {
-      align-items: stretch;
-
-      input[type="date"] {
-        width: 45%;
-      }
-
-      span {
-        color: $primaryColor;
-        font-size: 0.6rem;
-        margin: 0 3px;
-      }
+      position: relative;
+      border-radius: 5px;
+      background: $light;
+      color: $primaryFont;
+      font-size: 0.8rem;
+      padding: 5px;
     }
   }
 
@@ -71,14 +60,18 @@
     div {
       align-items: stretch;
 
+      ::placeholder {
+        color: $secondaryFont;
+        text-align: right;
+      }
+
       input[type="text"] {
-        width: 45%;
+        width: 40%;
       }
 
       span {
-        color: $primaryColor;
-        font-size: 0.6rem;
-        margin: 0 3px;
+        @include primary-font;
+        margin: 0 5px;
       }
     }
   }

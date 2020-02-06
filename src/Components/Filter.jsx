@@ -78,28 +78,28 @@ class Filter extends React.Component {
 
         {/* filter by category */}
         <div className="filter-categories">
-          <label>Filter By Categories</label>
-          <div>
-            <div className="Groceries" />
-            <div className="Education" />
-            <div className="Insurance" />
-            <div className="Petrol" />
-            <div className="Others" />
-          </div>
+          {/* <label>Filter By Categories</label> */}
+          <div className="Groceries">Groceries</div>
+          <div className="Education">Education</div>
+          <div className="Insurance">Insurance</div>
+          <div className="Petrol">Petrol</div>
+          <div className="Others">Others</div>
         </div>
 
         {/* filter by amount */}
         <div className="filter-amount-range">
-          <label htmlFor="min-amount">Filter By Amount</label>
+          {/* <label htmlFor="min-amount">Filter By Amount</label> */}
           <div>
             <input
               type="text"
+              placeholder="$ min"
               id="min-amount"
               onChange={this.handleInputChange}
             />
             <span>To</span>
             <input
               type="text"
+              placeholder="$ max"
               id="max-amount"
               onChange={this.handleInputChange}
             />

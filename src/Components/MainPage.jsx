@@ -132,10 +132,13 @@ class MainPage extends React.Component {
               data={this.state.expenseList}
               onQuickSearch={this.handleQuickSearch}
             />
-            <DeleteRecords
-              onDelete={this.handleDelete}
-              numSelectedRecords={this.state.numSelectedRecords}
-            />
+            <div className="btn">
+              <input type="button" value="Edit" />
+              <DeleteRecords
+                onDelete={this.handleDelete}
+                numSelectedRecords={this.state.numSelectedRecords}
+              />
+            </div>
           </div>
           <ExpenseList
             data={this.state.quickSearchResult}

@@ -39,10 +39,15 @@ select {
   .main {
     display: grid;
     grid-template-rows: 1fr 1fr 6fr;
-
-    div {
+    padding: 30px 30px 30px 10px;
+    .btn {
+      float: right;
       display: grid;
       grid-template-columns: 1fr 1fr;
+      grid-gap: 20px;
+      input {
+        @include btn-light;
+      }
     }
   }
 }
