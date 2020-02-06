@@ -4,17 +4,19 @@
 @import "components/_filter.scss";
 @import "components/_expense-list.scss";
 @import "components/_expense-form.scss";
+@import "mixin";
 
 input[type="text"],
 input[type="number"],
 input[type="date"],
 select {
-  margin: 0;
-  padding: 5px;
-  border: 0px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-  height: 35px;
+  // margin: 0;
+  // padding: 5px;
+  // border: 0px solid #ccc;
+  // border-radius: 5px;
+  // box-sizing: border-box;
+  // height: 35px;
+  @include input;
 }
 
 .main-page {
@@ -26,6 +28,9 @@ select {
   background: $background;
 
   .nav {
+    display: grid;
+    grid-template-rows: auto;
+    grid-row-gap: 10px;
     background: white;
     box-shadow: $shadow;
     padding: 20px;

@@ -11,10 +11,36 @@
 
   .filter-date-range {
     display: grid;
-    grid-template-columns: auto;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 10px;
+
+    div {
+      label {
+        @include primary-font;
+        text-align: left;
+        display: inline;
+        vertical-align: middle;
+      }
+      input[type="date"] {
+        display: inline;
+        vertical-align: middle;
+      }
+
+      span {
+        color: $primaryColor;
+        font-size: 0.6rem;
+        margin: 0 3px;
+      }
+    }
+  }
+
+  .filter-categories {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-rows: auto;
 
     label {
-      @include primaryFont;
+      @include primary-font;
       text-align: left;
     }
 
@@ -38,7 +64,7 @@
     grid-template-columns: auto;
 
     label {
-      @include primaryFont;
+      @include primary-font;
       text-align: left;
     }
 

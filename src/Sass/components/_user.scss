@@ -1,0 +1,20 @@
+@import "../variables.scss";
+
+.user {
+  display: grid;
+  grid-template-rows: auto;
+  margin: auto;
+
+  .user-avatar {
+    margin-top: 20px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background: $background;
+    align-items: center;
+  }
+  h2 {
+    color: $primaryFont;
+    font-size: 1rem;
+  }
+}

@@ -55,15 +55,18 @@ class Filter extends React.Component {
       <form className="filter">
         {/* filter by date */}
         <div className="filter-date-range">
-          <label htmlFor="start-date">Filter By Date</label>
+          {/* <label htmlFor="start-date">Filter By Date</label> */}
           <div>
+            <label htmlFor="start-date">From</label>
             <input
               id="start-date"
               className="form-control"
               type="date"
               onChange={this.handleInputChange}
             />
-            <span>To</span>
+          </div>
+          <div>
+            <label htmlFor="start-date">To</label>
             <input
               id="end-date"
               className="form-control"
@@ -71,24 +74,23 @@ class Filter extends React.Component {
               onChange={this.handleInputChange}
             />
           </div>
-          <hr />
         </div>
 
         {/* filter by category */}
         <div className="filter-categories">
-          <label htmlFor="start-date">Filter By Categories</label>
+          <label>Filter By Categories</label>
           <div>
-            <input type="button" value="Groceries" />
-            <input type="button" value="Education" />
-            <input type="button" value="Insurance" />
-            <input type="button" value="Petrol" />
-            <input type="button" value="Others" />
+            <div className="Groceries" />
+            <div className="Education" />
+            <div className="Insurance" />
+            <div className="Petrol" />
+            <div className="Others" />
           </div>
         </div>
 
         {/* filter by amount */}
         <div className="filter-amount-range">
-          <label htmlFor="start-date">Filter By Amount</label>
+          <label htmlFor="min-amount">Filter By Amount</label>
           <div>
             <input
               type="text"

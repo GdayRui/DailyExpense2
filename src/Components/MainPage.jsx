@@ -5,6 +5,8 @@ import ExpenseForm from "./ExpenseForm";
 import QuickSearch from "./QuickSearch";
 import DeleteRecords from "./DeleteRecords";
 import expenseService from "../Services/expenseService";
+import User from "./User";
+import Logo from "./Logo";
 import "../Sass/main.scss";
 
 class MainPage extends React.Component {
@@ -117,9 +119,9 @@ class MainPage extends React.Component {
     return (
       <div className="main-page">
         <div className="nav">
-          {/* <User /> */}
+          <User />
           <Filter onApplyFilter={this.handleFilterResult} />
-          {/* <Summary /> */}
+          {/* <div className="summary-btn"></div> */}
           {/* <Logo /> */}
         </div>
 
