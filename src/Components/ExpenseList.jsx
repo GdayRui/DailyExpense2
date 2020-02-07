@@ -156,7 +156,7 @@ class ExpenseList extends React.Component {
         <table>
           <thead>
             <tr>
-              <th onClick={() => this.handleSort("Date")}>
+              <th className="left-th" onClick={() => this.handleSort("Date")}>
                 Date{" "}
                 {this.state.sortingColumn === "Date" &&
                   (this.state.ascending ? (
@@ -201,10 +201,11 @@ class ExpenseList extends React.Component {
                     <FontAwesomeIcon className="faCaretDown" icon={faCaretUp} />
                   ))}
               </th>
-              <th className="Table-th"></th>
+              <th className="Table-th right-th"></th>
             </tr>
           </thead>
-          <tbody>{listJsx}</tbody>
+          <tbody>{listJsx}
+          <tr><td colSpan="6" className="table-footer"></td></tr></tbody>
         </table>
       </div>
     );

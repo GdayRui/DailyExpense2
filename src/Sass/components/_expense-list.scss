@@ -1,10 +1,12 @@
 .expense-list {
   table {
-    border-bottom: 1px solid black;
+    //border-bottom: 1px solid black;
     border-collapse: collapse;
-    color: $primaryColor;
+    color: $primaryFont;
     width: 100%;
-
+    box-shadow: $shadow;
+    border-radius: 20px 20px 20px 20px;
+    
     th,
     td {
       height: 30px;
@@ -13,14 +15,30 @@
       min-width: 20px;
     }
 
+    .table-footer{
+      border-radius: 0 0 20px 20px;
+      background-color: $primaryColor;
+    }
+
     th {
       background-color: $primaryColor;
-      color: $secondaryColor;
+      color: $light;
       cursor: pointer;
+    }
+    
+    .left-th{
+      border-radius: 20px 0 0 0;
+    }
+    .right-th{
+      border-radius: 0 20px 0 0;
     }
 
     tr:nth-child(even):not(th) {
-      background-color: #e0e0e0;
+      background-color: $background;
+    }
+
+    tr:nth-child(odd):not(th) {
+      background-color: $light;
     }
 
     tr:hover:not(th) {
