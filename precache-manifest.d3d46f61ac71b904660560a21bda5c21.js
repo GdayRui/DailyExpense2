@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "bc94d99ffe0b615621751e61ac6dd6a5",
+    "revision": "b115ab603ca7e38df1795139d47475e5",
     "url": "/DailyExpense2/index.html"
   },
   {
-    "revision": "6ec58192065c841d2478",
-    "url": "/DailyExpense2/static/css/main.430541b5.chunk.css"
+    "revision": "30cd936fc5f7dd2ad5e7",
+    "url": "/DailyExpense2/static/css/main.9f86e8f3.chunk.css"
   },
   {
     "revision": "143876e8fcd6d1326d66",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/DailyExpense2/static/js/2.69a8e8d7.chunk.js.LICENSE"
   },
   {
-    "revision": "6ec58192065c841d2478",
-    "url": "/DailyExpense2/static/js/main.7a64750e.chunk.js"
+    "revision": "30cd936fc5f7dd2ad5e7",
+    "url": "/DailyExpense2/static/js/main.c5a16bf3.chunk.js"
   },
   {
     "revision": "8055b3daf340e54845c4",
