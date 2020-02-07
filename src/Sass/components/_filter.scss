@@ -23,12 +23,6 @@
     input[type="date"] {
       grid-column: 2/5;
     }
-
-    span {
-      color: $primaryColor;
-      font-size: 1.2em;
-      margin: 0 3px;
-    }
   }
 
   .filter-categories {
@@ -50,17 +44,27 @@
 
   .filter-amount-range {
     display: grid;
-    grid-template-columns: 3fr 1fr 3fr;
+    grid-template-columns: repeat(7 1fr);
+    align-items: center;
     margin: 0 0 20px 0;
-    justify-content: space-evenly;
 
     ::placeholder {
       color: $secondaryFont;
       text-align: right;
     }
+    input {
+      width: 100px;
+    }
+    #min-amount {
+      grid-column: 1/4;
+    }
+    #max-amount {
+      grid-column: 5/8;
+    }
 
     span {
       @include primary-font;
+      grid-column: 4/5;
       margin: 0 5px;
     }
   }
