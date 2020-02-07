@@ -35,9 +35,24 @@ class Login extends React.Component {
   }
 
   handleUserChange(evt) {
-    this.setState({
-      username: evt.target.value
-    });
+
+    switch (evt.target.id) {
+      case "username":
+        this.setState({
+          username: evt.target.value
+        });
+        break;
+
+      case "password":
+        this.setState({
+          password: evt.target.value
+        });
+        break;
+
+      default:
+        break;
+    }
+
   }
 
   handlePassChange(evt) {
@@ -49,31 +64,41 @@ class Login extends React.Component {
   render() {
     return (
       <div className="login">
-        <form onSubmit={this.handleSubmit}>
-          {this.state.error && (
-            <h3 data-test="error" onClick={this.dismissError}>
-              <button onClick={this.dismissError}>✖</button>
-              {this.state.error}
-            </h3>
-          )}
-          <label>User Name</label>
-          <input
-            type="text"
-            data-test="username"
-            value={this.state.username}
-            onChange={this.handleUserChange}
-          />
+        <div id="form-container">
+          <form id="login-form" onSubmit={this.handleSubmit}>
+            {this.state.error && (
+              <h3 data-test="error" onClick={this.dismissError}>
+                <button onClick={this.dismissError}>✖</button>
+                {this.state.error}
+              </h3>
+            )}
+            <div>
+              <label htmlFor="username">User Name</label>
+              <input
+                id="username"
+                type="text"
+                data-test="username"
+                value={this.state.username}
+                onChange={this.handleUserChange}
+              />
+            </div>
 
-          <label>Password</label>
-          <input
-            type="password"
-            data-test="password"
-            value={this.state.password}
-            onChange={this.handlePassChange}
-          />
+            <div>
+              <label htmlFor="password">Password</label>
+              <input
+                id="password"
+                type="password"
+                data-test="password"
+                value={this.state.password}
+                onChange={this.handlePassChange}
+              />
+            </div>
 
-          <input type="submit" value="Log In" data-test="submit" />
-        </form>
+            <div>
+              <input type="submit" className="btn-login" value="Login" data-test="submit" />
+            </div>
+          </form>
+        </div>
       </div>
     );
   }
