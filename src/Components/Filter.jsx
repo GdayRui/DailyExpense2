@@ -56,24 +56,20 @@ class Filter extends React.Component {
         {/* filter by date */}
         <div className="filter-date-range">
           {/* <label htmlFor="start-date">Filter By Date</label> */}
-          <div>
-            <label htmlFor="start-date">From</label>
-            <input
-              id="start-date"
-              className="form-control"
-              type="date"
-              onChange={this.handleInputChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="start-date">To</label>
-            <input
-              id="end-date"
-              className="form-control"
-              type="date"
-              onChange={this.handleInputChange}
-            />
-          </div>
+          <label htmlFor="start-date">From</label>
+          <input
+            id="start-date"
+            className="form-control"
+            type="date"
+            onChange={this.handleInputChange}
+          />
+          <label htmlFor="start-date">To</label>
+          <input
+            id="end-date"
+            className="form-control"
+            type="date"
+            onChange={this.handleInputChange}
+          />
         </div>
 
         {/* filter by category */}

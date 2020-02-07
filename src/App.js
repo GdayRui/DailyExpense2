@@ -5,21 +5,25 @@ import Login from "./Components/Login";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import MainPage from "./Components/MainPage";
-import { BrowserRouter as Router, Switch, Route, HashRouter } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  HashRouter
+} from "react-router-dom";
 
 function App() {
   return (
-    <HashRouter  basename="/">
+    <HashRouter basename="/">
       <div className="App">
-        <Header />
+        {/* <Header /> */}
         <Switch>
           <Route path="/" exact component={Login} />
-          <Route path="/expense" component={MainPage}
-          />
+          <Route path="/expense" component={MainPage} />
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
       </div>
-    </HashRouter >
+    </HashRouter>
   );
 }
 

@@ -9,34 +9,25 @@
   border-radius: 20px;
 
   .filter-date-range {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-between;
-    margin-bottom: 2em;
+    display: grid;
+    grid-template-rows: repeat(4 1fr);
+    grid-gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
 
-    div {
-      display: flex;
-      align-items: baseline;
-      align-items: stretch;
-      label {
-        @include primary-font;
-        text-align: center;
-        align-self: center;
-        // position: relative;
-        // left: 1em;
-        // top: 30%;
-      }
-      // input[type="date"] {
-      //   position: absolute;
-      //   right: 0;
-      //   top: 0;
-      // }
+    label {
+      @include primary-font;
+      grid-column: 1/2;
+      text-align: left;
+    }
+    input[type="date"] {
+      grid-column: 2/5;
+    }
 
-      span {
-        color: $primaryColor;
-        font-size: 1.2em;
-        margin: 0 3px;
-      }
+    span {
+      color: $primaryColor;
+      font-size: 1.2em;
+      margin: 0 3px;
     }
   }
 
