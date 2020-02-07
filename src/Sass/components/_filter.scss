@@ -34,7 +34,7 @@
   .filter-categories {
     display: flex;
     flex-wrap: wrap;
-    height: fit-content;
+    margin-bottom: 20px;
 
     div {
       height: 1.5em;
@@ -50,29 +50,18 @@
 
   .filter-amount-range {
     display: grid;
-    height: fit-content;
+    grid-template-columns: 3fr 1fr 3fr;
+    margin: 0 0 20px 0;
+    justify-content: space-evenly;
 
-    label {
-      @include primary-font;
-      text-align: left;
+    ::placeholder {
+      color: $secondaryFont;
+      text-align: right;
     }
 
-    div {
-      align-items: stretch;
-
-      ::placeholder {
-        color: $secondaryFont;
-        text-align: right;
-      }
-
-      input[type="text"] {
-        width: 40%;
-      }
-
-      span {
-        @include primary-font;
-        margin: 0 5px;
-      }
+    span {
+      @include primary-font;
+      margin: 0 5px;
     }
   }
 
@@ -80,6 +69,7 @@
     display: grid;
     grid-gap: 10px;
     grid-template-columns: 1fr 1fr;
+    margin: 10px 0;
 
     .btn-apply-filter {
       @include btn-dark;

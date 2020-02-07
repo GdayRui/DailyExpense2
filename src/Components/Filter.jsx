@@ -85,21 +85,19 @@ class Filter extends React.Component {
         {/* filter by amount */}
         <div className="filter-amount-range">
           {/* <label htmlFor="min-amount">Filter By Amount</label> */}
-          <div>
-            <input
-              type="text"
-              placeholder="$ min"
-              id="min-amount"
-              onChange={this.handleInputChange}
-            />
-            <span>To</span>
-            <input
-              type="text"
-              placeholder="$ max"
-              id="max-amount"
-              onChange={this.handleInputChange}
-            />
-          </div>
+          <input
+            type="text"
+            placeholder="$ min"
+            id="min-amount"
+            onChange={this.handleInputChange}
+          />
+          <span>To</span>
+          <input
+            type="text"
+            placeholder="$ max"
+            id="max-amount"
+            onChange={this.handleInputChange}
+          />
         </div>
 
         {/* filter btns */}
