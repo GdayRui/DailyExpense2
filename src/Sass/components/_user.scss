@@ -1,14 +1,14 @@
 @import "../variables.scss";
 
 .user {
-  display: grid;
-  grid-template-rows: auto;
-  margin: auto;
-
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 20px 0;
+  align-items: center;
   .user-avatar {
-    margin-top: 20px;
+    padding-top: 20px;
     height: 100px;
-    width: 100px;
+    width: 100px !important;
     border-radius: 50%;
     background: $background;
     align-items: center;

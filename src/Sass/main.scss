@@ -21,16 +21,13 @@ select {
 
 .main-page {
   display: grid;
-  grid-template-columns: 1fr 3.5fr;
+  grid-template-columns: minmax(260px, 1fr) 3.5fr;
   grid-column-gap: 20px;
   text-align: center;
   height: 100vh;
   background: $background;
 
   .nav {
-    display: grid;
-    grid-template-rows: auto;
-    grid-row-gap: 10px;
     background: white;
     box-shadow: $shadow;
     padding: 20px;
