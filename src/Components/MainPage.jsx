@@ -127,23 +127,20 @@ class MainPage extends React.Component {
 
         <div className="main">
           <ExpenseForm onAddNewRecord={this.handleAddNewRecord} />
-          <div>
+          <div className="expense-list">
             <QuickSearch
               data={this.state.expenseList}
               onQuickSearch={this.handleQuickSearch}
             />
-            <div className="btn">
-              <input type="button" value="Edit" />
-              <DeleteRecords
-                onDelete={this.handleDelete}
-                numSelectedRecords={this.state.numSelectedRecords}
-              />
-            </div>
+            <DeleteRecords
+              onDelete={this.handleDelete}
+              numSelectedRecords={this.state.numSelectedRecords}
+            />
+            <ExpenseList
+              data={this.state.quickSearchResult}
+              onToggleSelect={this.handleToggleSelect}
+            />
           </div>
-          <ExpenseList
-            data={this.state.quickSearchResult}
-            onToggleSelect={this.handleToggleSelect}
-          />
         </div>
 
         {/* <div>

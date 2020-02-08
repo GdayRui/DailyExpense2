@@ -41,7 +41,7 @@ class ExpenseList extends React.Component {
         return;
       }
     }
-  }
+  };
 
   // Sort the data each column
   handleSort = type => {
@@ -124,7 +124,7 @@ class ExpenseList extends React.Component {
       sortingColumn: type,
       ascending: !this.state.ascending
     });
-  }
+  };
 
   render() {
     let listJsx = this.state.data.map(item => {
@@ -152,7 +152,7 @@ class ExpenseList extends React.Component {
       );
     });
     return (
-      <div className="expense-list">
+      <div className="expense-table">
         <table>
           <thead>
             <tr>
@@ -204,8 +204,12 @@ class ExpenseList extends React.Component {
               <th className="Table-th right-th"></th>
             </tr>
           </thead>
-          <tbody>{listJsx}
-          <tr><td colSpan="6" className="table-footer"></td></tr></tbody>
+          <tbody>
+            {listJsx}
+            <tr>
+              <td colSpan="6" className="table-footer"></td>
+            </tr>
+          </tbody>
         </table>
       </div>
     );

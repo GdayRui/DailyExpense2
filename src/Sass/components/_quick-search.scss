@@ -1,15 +1,18 @@
+@import "../variables.scss";
+
 .quick-search {
-  margin: 1rem;
-  float: left;
+  grid-column: 1/4;
+  justify-self: stretch;
+  position: relative;
 
   input {
     margin: 0;
-    left: 8px;
-    position: relative;
+    width: 100%;
   }
   .search-icon {
-    left: -35px;
-    top: 2px;
-    position: relative;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: $secondaryFont;
   }
 }

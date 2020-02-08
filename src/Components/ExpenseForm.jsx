@@ -83,7 +83,7 @@ class ExpenseForm extends React.Component {
     // Form
     return (
       <div className="expense-form">
-        <form id="expense-form">
+        <form>
           <div className="form-group">
             <input
               id="date"
@@ -136,7 +136,7 @@ class ExpenseForm extends React.Component {
           </div>
           {/* Alert when submit without input */}
           {/* {alertDiv} */}
-          <div>
+          <div className="form-group">
             <input
               className="btn-add-expense"
               type="button"

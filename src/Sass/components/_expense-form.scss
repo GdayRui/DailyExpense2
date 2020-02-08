@@ -1,20 +1,21 @@
 @import "../variables.scss";
+@import "../mixin.scss";
 
 .expense-form {
+  margin: 0;
+
   form {
-    display: flex;
-    flex-wrap: nowrap;
-    width: 100%;
-    div {
-      margin: 0.5rem;
-      .btn-add-expense {
-        padding: 10px 5px;
-        border: 0px solid #ccc;
-        border-radius: 5px;
-        background-color: $primaryColor;
-        color: $secondaryColor;
-        width: 100%;
-      }
+    display: grid;
+    grid-template-columns: repeat(6 1fr);
+    grid-gap: 20px;
+    .form-group {
+      margin: 0;
+    }
+    input select {
+      @include input;
+    }
+    .btn-add-expense {
+      @include btn-dark;
     }
   }
 }

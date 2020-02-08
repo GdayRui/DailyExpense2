@@ -1,4 +1,7 @@
-.expense-list {
+.expense-table {
+  grid-column: 1/13;
+  grid-row-start: 2;
+  grid-auto-rows: auto;
   table {
     //border-bottom: 1px solid black;
     border-collapse: collapse;
@@ -6,7 +9,7 @@
     width: 100%;
     box-shadow: $shadow;
     border-radius: 20px 20px 20px 20px;
-    
+
     th,
     td {
       height: 30px;
@@ -15,7 +18,7 @@
       min-width: 20px;
     }
 
-    .table-footer{
+    .table-footer {
       border-radius: 0 0 20px 20px;
       background-color: $primaryColor;
     }
@@ -25,11 +28,11 @@
       color: $light;
       cursor: pointer;
     }
-    
-    .left-th{
+
+    .left-th {
       border-radius: 20px 0 0 0;
     }
-    .right-th{
+    .right-th {
       border-radius: 0 20px 0 0;
     }
 

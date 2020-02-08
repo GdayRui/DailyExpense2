@@ -1,0 +1,9 @@
+@import "../mixin.scss";
+
+.delete-records {
+  grid-column: 11/13;
+  align-self: center;
+  input {
+    @include btn-dark;
+  }
+}

@@ -1,5 +1,5 @@
 import React from "react";
-//import "../Sass/components/_delete-records.scss";
+import "../Sass/components/_delete-records.scss";
 
 class Login extends React.Component {
   constructor(props) {

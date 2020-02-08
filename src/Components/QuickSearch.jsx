@@ -7,7 +7,7 @@ class QuickSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
+      data: []
     };
   }
 
@@ -34,8 +34,8 @@ class QuickSearch extends React.Component {
   render() {
     return (
       <div className="quick-search">
-        <input type="text" onChange={e => this.onQuickSearch(e)} />
         <FontAwesomeIcon icon={faSearch} className="search-icon" />
+        <input type="text" onChange={e => this.onQuickSearch(e)} />
       </div>
     );
   }
