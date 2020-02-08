@@ -45,7 +45,7 @@ class ExpenseList extends React.Component {
 
   // Sort the data each column
   handleSort = type => {
-    debugger;
+    // debugger;
     const compareItem = (a, b) => {
       const itemA = a.description.toUpperCase();
       const itemB = b.description.toUpperCase();
