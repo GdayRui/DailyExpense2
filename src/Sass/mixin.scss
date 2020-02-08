@@ -6,6 +6,8 @@
   border-radius: 18px;
   background-color: $primaryColor;
   color: $light;
+  font-size: 12px;
+  font-weight: bold;
   width: 100%;
   height: 35px;
 }
@@ -16,13 +18,15 @@
   border-radius: 18px;
   background-color: $light;
   color: $primaryColor;
+  font-size: 12px;
+  font-weight: bold;
   width: 100%;
   height: 35px;
 }
 
 @mixin primary-font {
   color: $primaryFont;
-  font-size: 0.8rem;
+  font-size: 12px;
 }
 
 @mixin input {

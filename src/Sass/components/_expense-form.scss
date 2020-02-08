@@ -6,14 +6,16 @@
 
   form {
     display: grid;
-    grid-template-columns: repeat(6 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-gap: 20px;
+    align-items: center;
     .form-group {
-      margin: 0;
+      .form-control {
+        @include input;
+        width: 100%;
+      }
     }
-    input select {
-      @include input;
-    }
+
     .btn-add-expense {
       @include btn-dark;
     }
