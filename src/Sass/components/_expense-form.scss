@@ -19,5 +19,17 @@
     .btn-add-expense {
       @include btn-dark;
     }
+
+    .btn-add-expense:hover{
+      @include btn-dark;
+      background-color: $primaryColorHover;
+      box-shadow: $shadow;
+    }
+
+    .btn-add-expense:active{
+      @include btn-dark;
+      background-color: $primaryColorActive; 
+      box-shadow: $shadowActive;
+    }
   }
 }
