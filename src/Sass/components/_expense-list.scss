@@ -49,6 +49,11 @@
     }
   }
 
+  .loading{
+    height: 150px;
+    background-color: $background;
+  }
+
   .faCaretDown {
     -ms-transform: rotate(180deg); /* IE 9 */
     -webkit-transform: rotate(180deg); /* Safari 3-8 */

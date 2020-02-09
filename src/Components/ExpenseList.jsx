@@ -1,7 +1,11 @@
 import React from "react";
 //import '../Sass/components/_ExpenseList.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheckCircle,
+  faCaretUp,
+  faSpinner
+} from "@fortawesome/free-solid-svg-icons";
 
 class ExpenseList extends React.Component {
   constructor(props) {
@@ -151,6 +155,17 @@ class ExpenseList extends React.Component {
         </tr>
       );
     });
+
+    let loadingRow = (
+      <tr>
+        <td colSpan="6" className="loading">
+          <FontAwesomeIcon
+            className="faSpinner fa-spin fa-2x"
+            icon={faSpinner}
+          />
+        </td>
+      </tr>
+    );
     return (
       <div className="expense-table">
         <table>
@@ -205,7 +220,7 @@ class ExpenseList extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {listJsx}
+            {!this.props.isLoading ? listJsx : loadingRow}
             <tr>
               <td colSpan="6" className="table-footer"></td>
             </tr>

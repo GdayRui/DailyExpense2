@@ -15,7 +15,8 @@ class MainPage extends React.Component {
     this.state = {
       expenseList: [],
       quickSearchResult: [],
-      numSelectedRecords: 0
+      numSelectedRecords: 0,
+      isLoading: true
     };
   }
 
@@ -110,7 +111,8 @@ class MainPage extends React.Component {
 
         this.setState({
           expenseList: modifiedData,
-          quickSearchResult: modifiedData
+          quickSearchResult: modifiedData,
+          isLoading: false
         });
       });
   }
@@ -139,6 +141,7 @@ class MainPage extends React.Component {
             <ExpenseList
               data={this.state.quickSearchResult}
               onToggleSelect={this.handleToggleSelect}
+              isLoading={this.state.isLoading}
             />
           </div>
         </div>
