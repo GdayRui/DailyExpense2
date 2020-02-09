@@ -21,7 +21,7 @@ class Login extends React.Component {
           onClick={this.props.onDelete}
           // ES6 string
           value={`Delete ${this.state.numSelectedRecords} Records`}
-          // disabled={this.state.numSelectedRecords === 0}
+          disabled={this.state.numSelectedRecords === 0}
         />
       </div>
     );

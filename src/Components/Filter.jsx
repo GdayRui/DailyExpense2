@@ -39,7 +39,7 @@ class Filter extends React.Component {
     });
     setTimeout(() => {
       this.handleApplyFilter();
-    }, 0);   
+    }, 0);
   };
 
   handleInputChange = e => {
@@ -62,7 +62,15 @@ class Filter extends React.Component {
     }
   };
 
+  handleSelectCategory = e => {
+    const categoryName = e.target.innerText;
+  };
+
   render() {
+    let categories = this.props.categories.map(item => {
+      return <div key={item.id}>{item.categoryName}</div>;
+    });
+
     return (
       <form className="filter">
         {/* filter by date */}
@@ -87,11 +95,12 @@ class Filter extends React.Component {
         {/* filter by category */}
         <div className="filter-categories">
           {/* <label>Filter By Categories</label> */}
-          <div className="Groceries">Groceries</div>
+          {/* <div className="Groceries" onClick={this.handleSelectCategory}>Groceries</div>
           <div className="Education">Education</div>
           <div className="Insurance">Insurance</div>
           <div className="Petrol">Petrol</div>
-          <div className="Others">Others</div>
+          <div className="Others">Others</div> */}
+          {categories}
         </div>
 
         {/* filter by amount */}

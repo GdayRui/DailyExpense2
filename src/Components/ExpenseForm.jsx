@@ -59,25 +59,12 @@ class ExpenseForm extends React.Component {
     this.setState({ newRecord: newRecord });
   };
 
-  // get categories obj list from sever, includs 'id' & 'categoryName'
-  componentDidMount() {
-    // fetch("http://localhost:50204/api/Expense/Categories")
-    expenseService
-      .getCategories()
-      .then(resp => resp.json())
-      .then(categories => {
-        this.setState({
-          category: categories
-        });
-      });
-  }
-
   render() {
     // debugger;
-    console.log("render");
+    console.log(this.props.categories);
     // Form Category options
-    const categoryNames = this.state.category.map(ele => {
-      return <option>{ele.categoryName}</option>;
+    const categoryNames = this.props.categories.map(ele => {
+      return <option key={ele.id}>{ele.categoryName}</option>;
     });
 
     // Form

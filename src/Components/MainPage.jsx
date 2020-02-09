@@ -16,7 +16,8 @@ class MainPage extends React.Component {
       expenseList: [],
       quickSearchResult: [],
       numSelectedRecords: 0,
-      isLoading: true
+      isLoading: true,
+      categories: []
     };
   }
 
@@ -112,6 +113,15 @@ class MainPage extends React.Component {
           isLoading: false
         });
       });
+
+      expenseService
+      .getCategories()
+      .then(resp => resp.json())
+      .then(categories => {
+        this.setState({
+          categories: categories
+        });
+      });
   }
 
   render() {
@@ -119,13 +129,13 @@ class MainPage extends React.Component {
       <div className="main-page">
         <div className="nav">
           <User />
-          <Filter onFilterResult={this.handleFilterResult} onFilterBegin={this.handleFilterBegin} />
+          <Filter onFilterResult={this.handleFilterResult} onFilterBegin={this.handleFilterBegin} categories={this.state.categories} />
           {/* <div className="summary-btn"></div> */}
           {/* <Logo /> */}
         </div>
 
         <div className="main">
-          <ExpenseForm onAddNewRecord={this.handleAddNewRecord} />
+          <ExpenseForm onAddNewRecord={this.handleAddNewRecord} categories={this.state.categories} />
           <div className="expense-list">
             <QuickSearch
               data={this.state.expenseList}

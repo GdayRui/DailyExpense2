@@ -39,6 +39,15 @@
       text-align: center;
       margin: 0.5em;
       padding: 0.5em;
+      cursor: pointer;
+    }
+    div:hover{
+      background-color: $secondaryColor;
+      color: $light;
+    }
+    .category-selected{
+      border: 1px solid $secondaryColor;
+      background-color: lightgreen;
     }
   }
 
