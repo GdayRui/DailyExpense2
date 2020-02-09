@@ -27,6 +27,21 @@ class Filter extends React.Component {
       });
   };
 
+  handleResetFilter = () => {
+    this.setState({
+      filterObj: {
+        startDate: "",
+        endDate: "",
+        catigoryIDs: [],
+        minAmount: 0,
+        maxAmount: 99999
+      }
+    });
+    setTimeout(() => {
+      this.handleApplyFilter();
+    }, 0);   
+  };
+
   handleInputChange = e => {
     let filterObj = this.state.filterObj;
     switch (e.target.id) {
@@ -100,15 +115,15 @@ class Filter extends React.Component {
         {/* filter btns */}
         <div className="filter-btn">
           <input
-            type="button"
-            value="Apply Filter"
-            className="btn-apply-filter"
-            onClick={this.handleApplyFilter}
-          />
-          <input
             type="reset"
             value="Reset Filter"
             className="btn-reset-filter"
+            onClick={this.handleResetFilter}
+          />
+          <input
+            type="button"
+            value="Apply Filter"
+            className="btn-apply-filter"
             onClick={this.handleApplyFilter}
           />
         </div>
