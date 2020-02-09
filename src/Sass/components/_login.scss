@@ -1,4 +1,6 @@
 @import "../variables.scss";
+@import "../mixin.scss";
+
 .login{
     border: 1px solid black;
     height: 530px;
@@ -26,10 +28,14 @@
     }
 }
 
-.btn-login {
-    padding: 10px 5px;
-    border: 0px solid #ccc;
-    border-radius: 5px;
-    background-color: $primaryColor;
-    color: $secondaryColor;
+.btn-login{
+    @include btn-dark;
+}
+
+.btn-login:hover{
+    @include btn-dark-hover;
+}
+
+.btn-login:active{
+    @include btn-dark-active;
 }
