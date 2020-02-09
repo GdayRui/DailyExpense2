@@ -64,6 +64,10 @@ class MainPage extends React.Component {
     });
   };
 
+  handleFilterBegin = () => {
+    this.setState({isLoading: true});
+  }
+
   handleFilterResult = filterResult => {
     // add flags to filter result
     const modifiedData = this.addFlagToList(filterResult);
@@ -71,18 +75,12 @@ class MainPage extends React.Component {
     // using filterd result to update expense list
     this.setState({
       expenseList: modifiedData,
-      quickSearchResult: modifiedData
+      quickSearchResult: modifiedData,
+      isLoading: false
     });
   };
 
   handleAddNewRecord = newRecord => {
-    // debugger;
-    // Call API to post new record to server and update to table
-    // fetch("http://localhost:50204/api/Expense", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(newRecord)
-    // })
     expenseService
       .addNew(newRecord)
       .then(resp => resp.json())
@@ -102,7 +100,6 @@ class MainPage extends React.Component {
 
   // load data from sever after render
   componentDidMount() {
-    //fetch("http://localhost:50204/api/Expense")
     expenseService
       .getAllExpense()
       .then(resp => resp.json())
@@ -122,7 +119,7 @@ class MainPage extends React.Component {
       <div className="main-page">
         <div className="nav">
           <User />
-          <Filter onApplyFilter={this.handleFilterResult} />
+          <Filter onFilterResult={this.handleFilterResult} onFilterBegin={this.handleFilterBegin} />
           {/* <div className="summary-btn"></div> */}
           {/* <Logo /> */}
         </div>
@@ -145,26 +142,6 @@ class MainPage extends React.Component {
             />
           </div>
         </div>
-
-        {/* <div>
-          <QuickSearch
-            data={this.state.expenseList}
-            onQuickSearch={this.handleQuickSearch}
-          />
-          <Filter onApplyFilter={this.handleFilterResult} />
-        </div>
-
-        <div>
-          <ExpenseForm onAddNewRecord={this.handleAddNewRecord} />
-          <DeleteRecords
-            onDelete={this.handleDelete}
-            numSelectedRecords={this.state.numSelectedRecords}
-          />
-          <ExpenseList
-            data={this.state.quickSearchResult}
-            onToggleSelect={this.handleToggleSelect}
-          />
-        </div> */}
       </div>
     );
   }

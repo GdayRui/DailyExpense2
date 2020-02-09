@@ -16,17 +16,14 @@ class Filter extends React.Component {
   }
 
   handleApplyFilter = () => {
-    // Call API to get filtered result(data) and update to table
-    // fetch("http://localhost:50204/api/Expense/filter", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(this.state.filterObj)
-    // })
+    // to inform the main page start to spin
+    this.props.onFilterBegin();
+
     expenseService
       .filterExpense(this.state.filterObj)
       .then(resp => resp.json())
       .then(filterResult => {
-        this.props.onApplyFilter(filterResult);
+        this.props.onFilterResult(filterResult);
       });
   };
 
