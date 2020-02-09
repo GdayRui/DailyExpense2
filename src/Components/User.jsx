@@ -1,5 +1,6 @@
 import React from "react";
 import "../Sass/components/_user.scss";
+import Avatar from "../Images/Avatar-01.svg";
 
 class User extends React.Component {
   constructor(props) {
@@ -12,7 +13,8 @@ class User extends React.Component {
   render() {
     return (
       <div className="user">
-        <div className="user-avatar"></div>
+        {/* <div className="user-avatar"></div> */}
+        <img src={Avatar} alt="user-avatar" />
         <h2>Hello, Rui</h2>
       </div>
     );
