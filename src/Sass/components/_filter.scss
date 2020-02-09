@@ -54,7 +54,6 @@
     }
     input {
       width: 100%;
-      justify-self: stretch;
     }
     #min-amount {
       grid-column: 1/4;
@@ -80,22 +79,21 @@
     .btn-apply-filter {
       @include btn-dark;
     }
-    .btn-apply-filter:hover{
+    .btn-apply-filter:hover {
       @include btn-dark-hover;
     }
-    .btn-apply-filter:active{
+    .btn-apply-filter:active {
       @include btn-dark-active;
     }
 
     .btn-reset-filter {
       @include btn-light;
     }
-    .btn-reset-filter:hover{
+    .btn-reset-filter:hover {
       @include btn-light-hover;
     }
-    .btn-reset-filter:active{
+    .btn-reset-filter:active {
       @include btn-light-active;
     }
-    
   }
 }

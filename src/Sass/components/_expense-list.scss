@@ -2,6 +2,7 @@
   grid-column: 1/13;
   grid-row-start: 2;
   grid-auto-rows: auto;
+
   table {
     //border-bottom: 1px solid black;
     border-collapse: collapse;
@@ -16,6 +17,8 @@
       border: 0px solid rgb(145, 145, 145);
       padding: 8px;
       min-width: 20px;
+      color: $primaryFont;
+      font-size: 0.875rem;
     }
 
     .table-footer {
@@ -25,13 +28,13 @@
 
     th {
       background-color: $primaryColorLight;
-      color: $primaryFont;
       cursor: pointer;
     }
 
     .left-th {
       border-radius: 20px 0 0 0;
     }
+
     .right-th {
       border-radius: 0 20px 0 0;
     }
