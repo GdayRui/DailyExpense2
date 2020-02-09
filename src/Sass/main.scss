@@ -36,7 +36,7 @@ select {
 
   .main {
     display: grid;
-    grid-auto-rows: 50px;
+    grid-template-rows: 50px auto;
     padding: 30px 30px 30px 10px;
     .expense-list {
       margin-top: 30px;

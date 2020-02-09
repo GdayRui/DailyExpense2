@@ -2,29 +2,32 @@
 @import "../mixin.scss";
 
 .expense-form {
-  margin: 0;
+  height: 50px;
 
   form {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 20px;
     align-items: center;
-    .form-group {
-      .form-control {
-        @include input;
-        width: 100%;
-      }
+
+    .form-control {
+      @include input;
+      width: 100%;
+    }
+
+    ::placeholder {
+      color: $secondaryFont;
     }
 
     .btn-add-expense {
       @include btn-dark;
     }
 
-    .btn-add-expense:hover{
+    .btn-add-expense:hover {
       @include btn-dark-hover;
     }
 
-    .btn-add-expense:active{
+    .btn-add-expense:active {
       @include btn-dark-active;
     }
   }
