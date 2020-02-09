@@ -25,16 +25,41 @@
   cursor: pointer;
 }
 
+@mixin btn-dark-hover {
+  @include btn-dark;
+  background-color: $primaryColorHover;
+  box-shadow: $shadow;
+}
+
+@mixin btn-dark-active {
+  @include btn-dark;
+  background-color: $primaryColorActive; 
+  box-shadow: $shadowActive;
+}
+
 @mixin btn-light {
   padding: 10px 15px;
   border: 1px solid $primaryColor;
   border-radius: 18px;
-  background-color: $light;
+  background-color: $background;
   color: $primaryColor;
   font-size: 12px;
   font-weight: bold;
   width: 100%;
   height: 35px;
+  cursor: pointer;
+}
+
+@mixin btn-light-hover {
+  @include btn-light;
+  background-color: $light;
+  box-shadow: $shadow;
+}
+
+@mixin btn-light-active {
+  @include btn-light;
+  background-color: $background; 
+  box-shadow: $shadowActive;
 }
 
 @mixin primary-font {

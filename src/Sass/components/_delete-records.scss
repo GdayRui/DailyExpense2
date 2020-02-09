@@ -4,6 +4,14 @@
   grid-column: 11/13;
   align-self: center;
   input {
-    @include btn-dark;
+    @include btn-light;
+  }
+
+  input:hover{
+    @include btn-light-hover;
+  }
+
+  input:active{
+    @include btn-light-active;
   }
 }

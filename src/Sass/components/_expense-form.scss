@@ -21,15 +21,11 @@
     }
 
     .btn-add-expense:hover{
-      @include btn-dark;
-      background-color: $primaryColorHover;
-      box-shadow: $shadow;
+      @include btn-dark-hover;
     }
 
     .btn-add-expense:active{
-      @include btn-dark;
-      background-color: $primaryColorActive; 
-      box-shadow: $shadowActive;
+      @include btn-dark-active;
     }
   }
 }
