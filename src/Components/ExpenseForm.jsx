@@ -60,8 +60,6 @@ class ExpenseForm extends React.Component {
   };
 
   render() {
-    // debugger;
-    console.log(this.props.categories);
     // Form Category options
     const categoryNames = this.props.categories.map(ele => {
       return <option key={ele.id}>{ele.categoryName}</option>;

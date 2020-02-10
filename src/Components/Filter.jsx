@@ -8,7 +8,7 @@ class Filter extends React.Component {
       filterObj: {
         startDate: "",
         endDate: "",
-        catigoryIDs: [],
+        categoryIDs: [],
         minAmount: 0,
         maxAmount: 99999
       }
@@ -64,11 +64,30 @@ class Filter extends React.Component {
 
   handleSelectCategory = e => {
     const categoryName = e.target.innerText;
+    const categories =this.props.categories;
+
+    let filterObj = this.state.filterObj;
+
+    for (let i=0; i<categories.length; i++) {
+      if (categoryName === categories[i].categoryName) {
+        //const categoryIDs = [];
+        filterObj.categoryIDs.push(categories[i].id);
+        this.setState({
+          //categoryIDs: categoryIDs
+          filterObj: filterObj
+        });
+        break;
+      }
+    }
+    // setTimeout(() => {
+    //   console.log(this.state.filterObj.categoryIDs);
+    // }, 200);
+    
   };
 
   render() {
     let categories = this.props.categories.map(item => {
-      return <div key={item.id}>{item.categoryName}</div>;
+      return <div key={item.id} onClick={this.handleSelectCategory}>{item.categoryName}</div>;
     });
 
     return (
