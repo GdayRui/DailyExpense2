@@ -28,18 +28,10 @@ class MainPage extends React.Component {
       .filter(item => item.isSelected)
       .map(item => item.id);
 
-    // Post the new array which includs all selected elements' ids to sever
-    // Then reload data from sever
-    // fetch("http://localhost:50204/api/Expense/delete", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(idList)
-    // })
     expenseService
       .deleteExpense(idList)
       .then(resp => resp.json())
       .then(data => {
-        // fetch("http://localhost:50204/api/Expense")
         expenseService
           .getAllExpense()
           .then(resp => resp.json())
@@ -47,7 +39,8 @@ class MainPage extends React.Component {
             const modifiedData = this.addFlagToList(data);
             this.setState({
               expenseList: modifiedData,
-              quickSearchResult: modifiedData
+              quickSearchResult: modifiedData,
+              numSelectedRecords: 0
             });
           });
       });

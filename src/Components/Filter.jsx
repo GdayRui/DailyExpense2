@@ -70,18 +70,13 @@ class Filter extends React.Component {
 
     for (let i=0; i<categories.length; i++) {
       if (categoryName === categories[i].categoryName) {
-        //const categoryIDs = [];
         filterObj.categoryIDs.push(categories[i].id);
         this.setState({
-          //categoryIDs: categoryIDs
           filterObj: filterObj
         });
         break;
       }
     }
-    // setTimeout(() => {
-    //   console.log(this.state.filterObj.categoryIDs);
-    // }, 200);
     
   };
 
