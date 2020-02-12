@@ -59,8 +59,8 @@ class MainPage extends React.Component {
   };
 
   handleFilterBegin = () => {
-    this.setState({isLoading: true});
-  }
+    this.setState({ isLoading: true });
+  };
 
   handleFilterResult = filterResult => {
     // add flags to filter result
@@ -88,8 +88,12 @@ class MainPage extends React.Component {
       });
   };
 
-  handleToggleSelect = numSelectedRecords => {
-    this.setState({ numSelectedRecords: numSelectedRecords });
+  handleToggleSelect = isSelected => {
+    this.setState({
+      numSelectedRecords: isSelected
+        ? this.state.numSelectedRecords + 1
+        : this.state.numSelectedRecords - 1
+    });
   };
 
   // load data from sever after render
@@ -107,7 +111,7 @@ class MainPage extends React.Component {
         });
       });
 
-      expenseService
+    expenseService
       .getCategories()
       .then(resp => resp.json())
       .then(categories => {
@@ -122,13 +126,20 @@ class MainPage extends React.Component {
       <div className="main-page">
         <div className="nav">
           <User />
-          <Filter onFilterResult={this.handleFilterResult} onFilterBegin={this.handleFilterBegin} categories={this.state.categories} />
+          <Filter
+            onFilterResult={this.handleFilterResult}
+            onFilterBegin={this.handleFilterBegin}
+            categories={this.state.categories}
+          />
           {/* <div className="summary-btn"></div> */}
           {/* <Logo /> */}
         </div>
 
         <div className="main">
-          <ExpenseForm onAddNewRecord={this.handleAddNewRecord} categories={this.state.categories} />
+          <ExpenseForm
+            onAddNewRecord={this.handleAddNewRecord}
+            categories={this.state.categories}
+          />
           <div className="expense-list">
             <QuickSearch
               data={this.state.expenseList}

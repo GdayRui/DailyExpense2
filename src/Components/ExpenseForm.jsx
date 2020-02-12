@@ -68,7 +68,7 @@ class ExpenseForm extends React.Component {
     // Form
     return (
       <div className="expense-form">
-        <form>
+        <form id="expense-form">
           <div className="form-group">
             <input
               id="date"

@@ -14,7 +14,6 @@ class ExpenseList extends React.Component {
       ascending: true,
       data: [],
       storageKey: "expenseList",
-      numSelectedRecords: 0,
       sortingColumn: ""
     };
   }
@@ -27,21 +26,17 @@ class ExpenseList extends React.Component {
 
   // Toggle select rows
   handleSelected = id => {
-    let numSelectedRecords = this.state.numSelectedRecords;
-
     for (let i = 0; i < this.state.data.length; i++) {
       if (id === this.state.data[i].id) {
         let tmpData = this.state.data;
 
         tmpData[i].isSelected = !tmpData[i].isSelected;
-        tmpData[i].isSelected ? numSelectedRecords++ : numSelectedRecords--;
 
         this.setState({
-          numSelectedRecords: numSelectedRecords,
           data: tmpData
         });
 
-        this.props.onToggleSelect(numSelectedRecords);
+        this.props.onToggleSelect(tmpData[i].isSelected);
         return;
       }
     }
