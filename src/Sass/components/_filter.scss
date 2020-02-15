@@ -41,13 +41,15 @@
       padding: 0.5em;
       cursor: pointer;
     }
-    div:hover{
+    div:hover {
       background-color: $secondaryColor;
       color: $light;
+      cursor: pointer;
     }
-    .category-selected{
-      border: 1px solid $secondaryColor;
-      background-color: lightgreen;
+    .category-selected {
+      background-color: $secondaryColor;
+      color: $light;
+      cursor: pointer;
     }
   }
 

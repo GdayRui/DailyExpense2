@@ -11,7 +11,8 @@ class Filter extends React.Component {
         categoryIDs: [],
         minAmount: 0,
         maxAmount: 99999
-      }
+      },
+      categories: []
     };
   }
 
@@ -62,28 +63,70 @@ class Filter extends React.Component {
     }
   };
 
-  handleSelectCategory = e => {
+  // when click the category div
+  handleClickCategory = e => {
     const categoryName = e.target.innerText;
-    const categories =this.props.categories;
-
-    let filterObj = this.state.filterObj;
-
-    for (let i=0; i<categories.length; i++) {
+    const categories = this.state.categories;
+    const filterObj = this.state.filterObj;
+    // push the selected categories' ids to 'categoryIDs'
+    for (let i = 0; i < categories.length; i++) {
       if (categoryName === categories[i].categoryName) {
         filterObj.categoryIDs.push(categories[i].id);
+
+        categories[i].isCategorySelected = !categories[i].isCategorySelected;
         this.setState({
-          filterObj: filterObj
+          filterObj: filterObj,
+          categories: categories
         });
         break;
       }
     }
-    
   };
 
-  render() {
-    let categories = this.props.categories.map(item => {
-      return <div key={item.id} onClick={this.handleSelectCategory}>{item.categoryName}</div>;
+  static getDerivedStateFromProps(props, state) {
+    return { categories: props.categories };
+  }
+
+  componentDidMount() {
+    const getNewCategories = categories => {
+      return categories.map(item => {
+        item.isCategorySelected = false;
+        return item;
+      });
+    };
+
+    this.setState({
+      categories: getNewCategories(this.state.categories)
     });
+  }
+
+  render() {
+    // filter categories
+    let categories = this.state.categories.map(item => {
+      if (item.isCategorySelected) {
+        return (
+          <div
+            className="category-selected"
+            key={item.id}
+            onClick={this.handleClick}
+          >
+            {item.categoryName}
+          </div>
+        );
+      }
+      return (
+        <div className="" key={item.id} onClick={this.handleClickCategory}>
+          {item.categoryName}
+        </div>
+      );
+    });
+    //   const className = (changeStyle = e => {
+    //     if (e.target.innerText === item.categoryName) {
+    //       return (className = this.state.isCategorySelected
+    //         ? "category-selected"
+    //         : "");
+    //     }
+    //   });
 
     return (
       <form className="filter">
@@ -109,11 +152,6 @@ class Filter extends React.Component {
         {/* filter by category */}
         <div className="filter-categories">
           {/* <label>Filter By Categories</label> */}
-          {/* <div className="Groceries" onClick={this.handleSelectCategory}>Groceries</div>
-          <div className="Education">Education</div>
-          <div className="Insurance">Insurance</div>
-          <div className="Petrol">Petrol</div>
-          <div className="Others">Others</div> */}
           {categories}
         </div>
 

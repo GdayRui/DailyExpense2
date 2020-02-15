@@ -58,8 +58,19 @@ class MainPage extends React.Component {
     });
   };
 
-  handleFilterBegin = () => {
-    this.setState({ isLoading: true });
+  // add isSelected flag to each element of data list
+  // addFlagToCategories = categoryList => {
+  //   return categoryList.map(item => {
+  //     item.isCategorySelected = false;
+  //     return item;
+  //   });
+  // };
+
+  handleFilterBegin = categories => {
+    this.setState({
+      isLoading: true
+      // categories: this.addFlagToCategories(categories)
+    });
   };
 
   handleFilterResult = filterResult => {
