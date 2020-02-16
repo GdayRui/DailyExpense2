@@ -20,8 +20,9 @@ class Filter extends React.Component {
     // to inform the main page start to spin
     this.props.onFilterBegin();
     // update categoryIDs
-    const categories = this.state.categories;
-    newFilterObj.categoryIDs = categories
+    const newFilterObj = this.state.filterObj;
+
+    newFilterObj.categoryIDs = this.state.categories
       .filter(item => item.isCategorySelected)
       .map(item => item.id);
 
