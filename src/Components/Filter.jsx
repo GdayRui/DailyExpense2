@@ -29,15 +29,24 @@ class Filter extends React.Component {
   };
 
   handleResetFilter = () => {
+    // reset category flag
+    const resetIsCategorySelected = categories => {
+      return categories.map(item => {
+        item.isCategorySelected = false;
+      });
+    };
+    // reset date, amount, category
     this.setState({
       filterObj: {
         startDate: "",
         endDate: "",
-        catigoryIDs: [],
+        categoryIDs: [],
         minAmount: 0,
         maxAmount: 99999
-      }
+      },
+      categories: resetIsCategorySelected(this.state.categories)
     });
+
     setTimeout(() => {
       this.handleApplyFilter();
     }, 0);
@@ -68,6 +77,7 @@ class Filter extends React.Component {
     const categoryName = e.target.innerText;
     const categories = this.state.categories;
     const filterObj = this.state.filterObj;
+
     // push the selected categories' ids to 'categoryIDs'
     for (let i = 0; i < categories.length; i++) {
       if (categoryName === categories[i].categoryName) {
@@ -88,6 +98,7 @@ class Filter extends React.Component {
   }
 
   componentDidMount() {
+    // add flag to categories
     const getNewCategories = categories => {
       return categories.map(item => {
         item.isCategorySelected = false;
@@ -108,7 +119,7 @@ class Filter extends React.Component {
           <div
             className="category-selected"
             key={item.id}
-            onClick={this.handleClick}
+            onClick={this.handleClickCategory}
           >
             {item.categoryName}
           </div>
@@ -120,13 +131,6 @@ class Filter extends React.Component {
         </div>
       );
     });
-    //   const className = (changeStyle = e => {
-    //     if (e.target.innerText === item.categoryName) {
-    //       return (className = this.state.isCategorySelected
-    //         ? "category-selected"
-    //         : "");
-    //     }
-    //   });
 
     return (
       <form className="filter">

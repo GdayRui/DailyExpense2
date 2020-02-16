@@ -33,6 +33,7 @@
     div {
       height: 1.5em;
       border-radius: 5px;
+      border: 1px solid $light;
       background: $light;
       color: $primaryFont;
       font-size: 1.2em;
@@ -42,12 +43,16 @@
       cursor: pointer;
     }
     div:hover {
-      background-color: $secondaryColor;
-      color: $light;
+      //background-color: $secondaryColorLight;
+      //color: $light;
+      border: 1px solid $secondaryColor;
+      //outline: $secondaryColor solid 1px;
       cursor: pointer;
     }
     .category-selected {
       background-color: $secondaryColor;
+      border: 1px solid $secondaryColor;
+      border-radius: 5px;
       color: $light;
       cursor: pointer;
     }
