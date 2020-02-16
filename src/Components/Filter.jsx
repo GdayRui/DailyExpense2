@@ -97,20 +97,6 @@ class Filter extends React.Component {
     return { categories: props.categories };
   }
 
-  componentDidMount() {
-    // add flag to categories
-    const getNewCategories = categories => {
-      return categories.map(item => {
-        item.isCategorySelected = false;
-        return item;
-      });
-    };
-
-    this.setState({
-      categories: getNewCategories(this.state.categories)
-    });
-  }
-
   render() {
     // filter categories
     let categories = this.state.categories.map(item => {
