@@ -19,6 +19,18 @@ class Filter extends React.Component {
   handleApplyFilter = () => {
     // to inform the main page start to spin
     this.props.onFilterBegin();
+    // update categoryIDs
+    const categories = this.state.categories;
+    const filteredCategories = categories.filter(
+      item => item.isCategorySelected
+    );
+    const categoryIDs = filteredCategories.map(item => item.id);
+    const newFilterObj = this.state.filterObj;
+    newFilterObj.categoryIDs = categoryIDs;
+
+    this.setState({
+      filterObj: newFilterObj
+    });
 
     expenseService
       .filterExpense(this.state.filterObj)
@@ -76,16 +88,11 @@ class Filter extends React.Component {
   handleClickCategory = e => {
     const categoryName = e.target.innerText;
     const categories = this.state.categories;
-    const filterObj = this.state.filterObj;
-
     // push the selected categories' ids to 'categoryIDs'
     for (let i = 0; i < categories.length; i++) {
       if (categoryName === categories[i].categoryName) {
-        filterObj.categoryIDs.push(categories[i].id);
-
         categories[i].isCategorySelected = !categories[i].isCategorySelected;
         this.setState({
-          filterObj: filterObj,
           categories: categories
         });
         break;
